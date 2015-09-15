@@ -44,7 +44,6 @@
 					$this->GoLivePlanObject = new GoLivePlan( $row['goliveplan_id'] );
 					$this->ClosureModelObject = new ClosureModel( $row['closure_id'] );
 				}
-			// $this->BRDRequirementObject = new BRDRequirement
 		}
 
 		// the following functions will be obsolete
