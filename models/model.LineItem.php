@@ -45,9 +45,5 @@
 					$this->ClosureModelObject = new ClosureModel( $row['closure_id'] );
 				}
 		}
-
-		// the following functions will be obsolete
-		public function getMemberVariables();		// invokes other member functions for populating module objects
-		public function getBRDRequirements();
 	}
 ?>

@@ -17,7 +17,7 @@
 			$res = $this->fetchQueryResult($q);
 			
 			if ( $res && $res->num_rows > 0 )
-				if ( $res->fetch_assoc() ) {
+				if ( $row = $res->fetch_assoc() ) {
 					$this->id = $row['id'];
 					$this->capability_enhancement = $row['capability_enhancement'];
 					$this->capability_enhancement_impact_areas = $row['capability_enhancement_impact_areas'];
