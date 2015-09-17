@@ -17,11 +17,13 @@
 
 			$res_project = $this->fetchQueryResult( $project_details_query );
 
+			// If 2 or more projects have same name, then identify the project by intersection of name and id
 			if ( $res_project->num_rows > 1 ){
 				$project_details_query = $project_details_query." AND id = $id";
 				$res_project_refined_by_id = $this->fetchQueryResult( $project_details_query );
 			}
-			
+
+			// If project had to be filtered by name and id
 			if ( $res_project_refined_by_id && $res_project_refined_by_id->num_rows == 1 ){
 				while ( $row = $res_project_refined_by_id->fetch_assoc() ) {
 					if ( $row['is_active'] != 0 ) {
@@ -32,6 +34,7 @@
 					}
 				}
 			}
+			// else if  project had to be filtered by name only
 			else if ( $res_project && $res_project->num_rows > 0 )
 				while ( $row_project = $res_project->fetch_assoc() )
 				{
