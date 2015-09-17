@@ -10,22 +10,29 @@
 		public function __construct( $name = "_dummy1_", $id = "-1" ) 
 		{
 			parent::__construct();
-			$lineItems = array();
-			$lineItemIDs = array();
+			$this->lineItems = array();
+			$this->lineItemIDs = array();
 
-			if ( !($name == "_dummy1_" || $name == "_dummy_") && $id > 0 )
-				$project_details_query = "SELECT * FROM projects WHERE name = $name AND id = $id";
-			else if ( $name == "_dummy1_" || $name == "_dummy_" )
-				$project_details_query = "SELECT * FROM projects WHERE id = $id";
-			else if ( $id < 0 )
-				$project_details_query = "SELECT * FROM projects WHERE name = $name";
-			else
-				$project_details_query = "SELECT * FROM projects WHERE name = '_dummy_'";
+			$project_details_query = "SELECT * FROM projects WHERE name = '$name' ";
 
 			$res_project = $this->fetchQueryResult( $project_details_query );
+
+			if ( $res_project->num_rows > 1 ){
+				$project_details_query = $project_details_query." AND id = $id";
+				$res_project_refined_by_id = $this->fetchQueryResult( $project_details_query );
+			}
 			
-			$project = array();
-			if ( $res_project && $res_project->num_rows > 0 )
+			if ( $res_project_refined_by_id && $res_project_refined_by_id->num_rows == 1 ){
+				while ( $row = $res_project_refined_by_id->fetch_assoc() ) {
+					if ( $row['is_active'] != 0 ) {
+						$this->id = $row['id'];
+						$this->name = $row['name'];
+						$this->remarks = $row['remarks'];
+						break;
+					}
+				}
+			}
+			else if ( $res_project && $res_project->num_rows > 0 )
 				while ( $row_project = $res_project->fetch_assoc() )
 				{
 					if ( $row_project['is_active'] != 0 ){
@@ -36,11 +43,11 @@
 					}
 				}
 
+			// UNCOMMENT THE IF-CLAUSE ONCE TESTING IS DONE
 			if ( $this->id && $this->id > 0 ){
 				$this->getLineItemIds();
-				$this->getLineItems();
+				$this->initializeLineItems();
 			}
-
 		}
 
 		public function getLineItemIds()	// FETCH from projects_lineitems_mapping
@@ -59,7 +66,6 @@
 			$this->lineItemIDs = $lineItemIDsArray;
 		}
 
-		// CHECK CORRECTNESS OF THIS SHIT
 		public function initializeLineItems()		// initialize the $lineItems (array of lineItem objects) by invoking 
 		{
 			foreach ( $this->lineItemIDs as $id ) {
@@ -68,18 +74,7 @@
 			}
 		}
 		
-		/*public function getLineItems()		// initialize the $lineItems (array of lineItem objects) by invoking 
-		{
-			$str_array = $this->array2string( $this->lineItemIDs );
-			$q = "SELECT * FROM lineitems WHERE id IN ".$str_array;
-
-			$res = $this->fetchQueryResult( $q );
-
-			while ( $row = $res->fetch_assoc() ) {
-				$lineItemsArray[] = $row;
-			}
-		}
-
+		/*
 		protected function array2string( $arr )
 		{
 			if ( count($arr) < 1 )
@@ -93,7 +88,8 @@
 			}
 
 			return $str;
-		}*/
+		}
+		*/
 		
 	}
 
