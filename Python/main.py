@@ -1,11 +1,52 @@
 import config
 import csv
 
-def getcsvfilename( directoryname ):
-	files = os.listdir( directoryname )
+# return the list of files within the directory
+def getCsvFileName( directory ):
+	files = os.listdir( directory )
 	return files
 
-def readcsv( filename ):
+# converts python list to string to be appended to mysql query
+def list2Str( li ):
+	if len(li) <= 0:
+		return "()"
+	elif len(li) == 1:
+		return "('" + str(li[0]) + "')"
+
+	ret = "( '" + str(li[0]) + "'"
+	for i in li[1:]:
+		ret = ret + ", " + "'" + str(i) + "'"
+	ret = ret + ")"
+	
+	return ret
+
+# commits query to db
+def executeQuery( query ):
+	db = MySQLdb.connect( config.host, config.user, config.password, config.db )
+
+	cur = db.cursor()
+	try:
+		cur.execute( query )
+		db.commit()
+		cur.close()
+		db.close()
+		return True
+	except:
+		db.rollback()
+		cur.close()
+		db.close()
+		return False
+
+# prepares the query from list and pushes it for db insertion
+def push2Db( tablename, datalist ):
+	sqlstring = list2Str(datalist)
+
+	query = "INSERT INTO "+ tablename +" VALUES"+sqlstring
+	ret = executeQuery( query )
+
+	return ret
+
+def readCsv( filename ):
 	linecount = 0
 	
 	with open( config.parent_dir+"/"+filename, "r+" ) as inputfile :
@@ -24,6 +65,7 @@ def readcsv( filename ):
 			if linecount == 5:
 				pass
 
+			# CALL THE PUSH TO DB FUNCTION FOR EACH OF THE TABLE FIELDS BELOW
 			if linecount >= 7:
 				lineitem_name = row[1]
 				print "Line Item Name : "+lineitem_name
@@ -57,8 +99,8 @@ def readcsv( filename ):
 
 		print "Loop ends"
 
-# fname = getcsvfilename(config.parent_dir)
+# fname = getCsvFileName(config.parent_dir)
 # if len(fname) == 1:
-# 	readcsv( fname[1] )
+# 	readCsv( fname[1] )
 
-readcsv("GTM_Template_csv.csv")
+readCsv("GTM_Template_csv.csv")
