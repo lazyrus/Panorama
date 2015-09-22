@@ -1,5 +1,7 @@
 import config
 import csv
+import utils
+import MySQLdb
 from datetime import datetime 
 
 # return the list of files within the directory
@@ -58,10 +60,11 @@ def convert2SqlDate( li ):
 
 
 def formatIfDate( item ):
-	print " @@@@ formatIfDate invoked"
+	# print " @@@@ formatIfDate invoked"
 	try:
 		li = item.split("/")
-		print "split success " + str(li)
+		for i in range(0, len(li) ):
+			li[i] = li[i].strip()
 
 		month_list = [	"jan", "january", "feb", "february", "mar", "march", "apr", "april", "may", "jun", \
 						"june", "jul", "july", "aug", "august", "sep", "sept", "september", "oct", "october", \
@@ -91,7 +94,6 @@ def formatIfDate( item ):
 
 def sanitizeInput( arr ):
 	for i in range(0, len(arr) ):
-		# print arr[i]
 		if arr[i].lower() == 'y' or arr[i].lower() == "yes":
 			arr[i] = '1'
 		elif arr[i].lower() == 'n' or arr[i].lower() == "no":
@@ -100,8 +102,22 @@ def sanitizeInput( arr ):
 
 	return arr
 
-# converts python list to string to be appended to mysql query
+# converts python list to string
 def list2Str( li ):
+	if len(li) <= 0:
+		return "()"
+	elif len(li) == 1:
+		return "(" + str(li[0]) + ")"
+
+	ret = "( " + str(li[0])
+	for i in li[1:]:
+		ret = ret + ", " + str(i)
+	ret = ret + ")"
+	
+	return ret
+
+# converts list of values to string for sql insert queries
+def valuesList2Str( li ):
 	if len(li) <= 0:
 		return "()"
 	elif len(li) == 1:
@@ -132,10 +148,13 @@ def executeQuery( query ):
 		return False
 
 # prepares the query from list and pushes it for db insertion
-def push2Db( tablename, datalist ):
-	sqlstring = list2Str(datalist)
+def push2Db( tablename, attributelist, valueslist ):
+	attributestring = list2Str(attributelist)
+	valuestring = valuesList2Str(valueslist)
 
-	query = "INSERT INTO "+ tablename +" VALUES"+sqlstring
+	query = "INSERT INTO "+ tablename + attributestring +" VALUES"+valuestring
+	print query
+	# UNCOMMENT AFTER TESTING.
 	ret = executeQuery( query )
 
 	return ret
@@ -146,7 +165,6 @@ def readCsv( filename ):
 	with open( config.parent_dir+"/"+filename, "r+" ) as inputfile :
 		reader = csv.reader( inputfile )
 
-		print inputfile
 		for row in reader:
 			print "entered loop"
 			linecount += 1
@@ -164,49 +182,67 @@ def readCsv( filename ):
 				lineitem_name = row[1]
 				print "Line Item Name : "+lineitem_name
 				
-				BRDRequirementsList = row[2:16]
-				print "BRDRequirement fields : "+str(BRDRequirementsList)
-				print "post sanitization of fields : " + str( sanitizeInput(BRDRequirementsList) )
+				BRDRequirementsRawValues = row[2:16]
+				print "BRDRequirement fields : "+str(BRDRequirementsRawValues)
+				BRDRequirementsValues = sanitizeInput(BRDRequirementsRawValues)
+				print push2Db(config.tblBRDRequirements, config.BRDRequirementsAttrs, BRDRequirementsValues)
+				print "post sanitization of fields : " + str( BRDRequirementsValues )
 				print "\n"
 
-				TechDevNeedList = row[16:24]
-				print "TechDevNeed fields : "+str(TechDevNeedList)
-				print "post sanitization of fields : " + str( sanitizeInput(TechDevNeedList) )
+				TechDevNeedRawValues = row[16:24]
+				print "TechDevNeed fields : "+str(TechDevNeedRawValues)
+				TechDevNeedValues = sanitizeInput(TechDevNeedRawValues)
+				print push2Db(config.tblTechDevNeed, config.TechDevNeedAttrs, TechDevNeedValues)
+				print "post sanitization of fields : " + str( TechDevNeedValues )
 				print "\n"
 
-				ContentNeedList = row[24:32]
-				print "ContentNeed fields : "+str(ContentNeedList)
-				print "post sanitization of fields : " + str( sanitizeInput(ContentNeedList) )
+				ContentNeedRawValues = row[24:32]
+				print "ContentNeed fields : "+str(ContentNeedRawValues)
+				ContentNeedValues = sanitizeInput(ContentNeedRawValues)
+				push2Db(config.tblContentNeed, config.ContentNeedAttrs, ContentNeedValues)
+				print "post sanitization of fields : " + str( sanitizeInput(ContentNeedRawValues) )
 				print "\n"
 
-				TrainingNCommunicationPlanList = row[32:43]
-				print "TrainingNCommunicationPlan fields : "+str(TrainingNCommunicationPlanList)
-				print "post sanitization of fields : " + str( sanitizeInput(TrainingNCommunicationPlanList) )
+				TrainingNCommunicationPlanRawValues = row[32:43]
+				print "TrainingNCommunicationPlan fields : "+str(TrainingNCommunicationPlanRawValues)
+				TrainingNCommunicationPlanValues = sanitizeInput(TrainingNCommunicationPlanRawValues)
+				push2Db(config.tblTrainingNCommunicationPlan, config.TrainingNCommunicationPlanAttrs, TrainingNCommunicationPlanValues)
+				print "post sanitization of fields : " + str( TrainingNCommunicationPlanValues )
 				print "\n"
 
-				CapabilitiesEnhancementList = row[43:46]
-				print "CapabilitiesEnhancement fields : "+str(CapabilitiesEnhancementList)
-				print "post sanitization of fields : " + str( sanitizeInput(CapabilitiesEnhancementList) )
+				CapabilitiesEnhancementRawValues = row[43:46]
+				print "CapabilitiesEnhancement fields : "+str(CapabilitiesEnhancementRawValues)
+				CapabilitiesEnhancementValues = sanitizeInput(CapabilitiesEnhancementRawValues)
+				push2Db(config.tblCapabilitiesEnhancement, config.CapabilitiesEnhancementAttrs, CapabilitiesEnhancementValues)
+				print "post sanitization of fields : " + str( CapabilitiesEnhancementValues )
 				print "\n"
 
-				CostBenefitList = row[46:51]
-				print "CostBenefit fields : "+str(CostBenefitList)
-				print "post sanitization of fields : " + str( sanitizeInput(CostBenefitList) )
+				CostBenefitRawValues = row[46:51]
+				print "CostBenefit fields : "+str(CostBenefitRawValues)
+				CostBenefitValues = sanitizeInput(CostBenefitRawValues)
+				push2Db(config.tblCostBenefit, config.CostBenefitAttrs, CostBenefitValues)
+				print "post sanitization of fields : " + str( CostBenefitValues )
 				print "\n"
 
-				RiskMitigationPlanList = row[51:65]
-				print "RiskMitigationPlan fields : "+str(RiskMitigationPlanList)
-				print "post sanitization of fields : " + str( sanitizeInput(RiskMitigationPlanList) )
+				RiskMitigationPlanRawValues = row[51:65]
+				print "RiskMitigationPlan fields : "+str(RiskMitigationPlanRawValues)
+				RiskMitigationPlanValues = sanitizeInput(RiskMitigationPlanRawValues)
+				push2Db(config.tblRiskMitigationPlan, config.RiskMitigationPlanAttrs, RiskMitigationPlanValues)
+				print "post sanitization of fields : " + str( RiskMitigationPlanValues )
 				print "\n"
 
-				GoLivePlanList = row[65:72]
-				print "GoLivePlan fields : "+str(GoLivePlanList)
-				print "post sanitization of fields : " + str( sanitizeInput(GoLivePlanList) )
+				GoLivePlanRawValues = row[65:72]
+				print "GoLivePlan fields : "+str(GoLivePlanRawValues)
+				GoLivePlanValues = sanitizeInput(GoLivePlanRawValues)
+				push2Db(config.tblGoLivePlan, config.GoLivePlanAttrs, GoLivePlanValues)
+				print "post sanitization of fields : " + str( GoLivePlanValues )
 				print "\n"
 
-				ClosureList = row[72:74]
-				print "Closure fields : "+str(ClosureList)
-				print "post sanitization of fields : " + str( sanitizeInput(ClosureList) )
+				ClosureRawValues = row[72:74]
+				print "Closure fields : "+str(ClosureRawValues)
+				ClosureValues = sanitizeInput(ClosureRawValues)
+				push2Db(config.tblClosure, config.ClosureAttrs, ClosureValues)
+				print "post sanitization of fields : " + str( ClosureValues )
 				print "\n"
 
 		print "Loop ends"
