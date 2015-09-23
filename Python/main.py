@@ -13,47 +13,50 @@ def convert2SqlDate( li ):
 	print "@@@ convert2SqlDate invoked. li : " + str(li)
 	# Convert li[1] to lowercase before using it as dictionary key
 	days_in_months = {	
-				"jan" : 31, "january" : 31,
-				# feb is missing as its number of days depends on the year (leap year or not)
-				"mar" : 31, "march" : 31,
-				"apr" : 30, "april" : 30,
-				"may" : 31,
-				"jun" : 30, "june" : 30,
-				"jul" : 31, "july" : 31,
-				"aug" : 31, "august" : 31,
-				"sep" : 30, "sept" : 30, "september" : 30,
-				"oct" : 31, "october" : 31,
-				"nov" : 30, "november" : 30,
-				"dec" : 31, "december" : 31
+				"jan" : 31, "january" : 31, "1" : 31, "01" : 31,
+				# number of days in FEBRUARY depends on the year (leap year or not)
+				"mar" : 31, "march" : 31, "3" : 31, "03" : 31,
+				"apr" : 30, "april" : 30, "4" : 30, "04" : 31,
+				"may" : 31, "5" : 31, "05" : 31,
+				"jun" : 30, "june" : 30, "6" : 30, "06" : 30,
+				"jul" : 31, "july" : 31, "7" : 31, "07" : 31,
+				"aug" : 31, "august" : 31, "8" : 31, "08" : 31,
+				"sep" : 30, "sept" : 30, "september" : 30, "9" : 30, "09" : 30,
+				"oct" : 31, "october" : 31, "10" : 31,
+				"nov" : 30, "november" : 30, "11" : 30,
+				"dec" : 31, "december" : 31, "12" : 31
 			}
 
 	month_serial_no = {
-						"jan" : 01, "january" : 01,
-						"feb" : 02, "february" : 02,
-						"mar" : 03, "march" : 03,
-						"apr" : 04, "april" : 04,
-						"may" : 05,
-						"jun" : 06, "june" : 06,
-						"jul" : 07, "july" : 07,
-						"aug" : 8, "august" : 8,
-						"sep" : 9, "sept" : 9, "september" : 9,
-						"oct" : 10, "october" : 10,
-						"nov" : 11, "november" : 11,
-						"dec" : 12, "december" : 12
+						"jan" : 01, "january" : 01, "1" : 01, "01" : 01,
+						"feb" : 02, "february" : 02, "2" : 02, "02" : 02,
+						"mar" : 03, "march" : 03, "3" : 03, "03" : 03,
+						"apr" : 04, "april" : 04, "4" : 04, "04" : 04,
+						"may" : 05, "5" : 05, "05" : 05,
+						"jun" : 06, "june" : 06, "6" : 06, "06" : 06,
+						"jul" : 07, "july" : 07, "7" : 07, "07" : 07,
+						"aug" : 8, "august" : 8, "8" : 8, "08" : 8,
+						"sep" : 9, "sept" : 9, "september" : 9, "9" : 9, "09" : 9,
+						"oct" : 10, "october" : 10, "10" : 10,
+						"nov" : 11, "november" : 11, "11" : 11,
+						"dec" : 12, "december" : 12, "12" : 12
 					}
 
 	if li[2] % 4 == 0 :
 		days_in_months["feb"] = 29
 		days_in_months["february"] = 29
+		days_in_months["2"] = 29
+		days_in_months["02"] = 29
 	else:
 		days_in_months["feb"] = 28
 		days_in_months["february"] = 28
+		days_in_months["2"] = 28
+		days_in_months["02"] = 28
 
 	date = str(li[2]) + "-" + str( month_serial_no[str(li[1].lower())] )
 	
 	if int(li[0]) > days_in_months[str(li[1].lower())]:
 		li[0] = days_in_months[str(li[1].lower())]
-	
 	date = date + "-" + str( li[0] )
 
 	return date
@@ -63,15 +66,20 @@ def formatIfDate( item ):
 	# print " @@@@ formatIfDate invoked"
 	try:
 		li = item.split("/")
+
+		if len(li) < 2 or len(li) > 3 :
+			li = item.split("-")
+
 		for i in range(0, len(li) ):
 			li[i] = li[i].strip()
 
-		month_list = [	"jan", "january", "feb", "february", "mar", "march", "apr", "april", "may", "jun", \
-						"june", "jul", "july", "aug", "august", "sep", "sept", "september", "oct", "october", \
-						"nov", "november", "dec", "december" ]
+		month_list = [	"1", "01", "jan", "january", "2", "02", "feb", "february", "3", "03", "mar", "march",\
+						"4", "04", "apr", "april", "5", "05", "may", "6", "06", "jun", "june", "7", "07", \
+						"jul", "july","8", "08", "aug", "august", "9", "09", "sep", "sept", "september", \
+						"10", "oct", "october", "11", "nov", "november", "12", "dec", "december" ]
 
 		if ( len(li) == 2 or len(li) == 3 ):
-			if li[1].lower() in month_list :
+			if li[1] in month_list or li[1].lower() in month_list :
 				if li[0].isdigit() and int(li[0]) <= 31:	# changes go in here
 					li[0] = int(li[0])
 					
@@ -81,6 +89,11 @@ def formatIfDate( item ):
 					except:
 						li.append(datetime.now().year)
 						print li
+
+					try:
+						li[2] = int( li[2] )		# converting the year to integer from string
+					except:
+						pass
 
 					ret = convert2SqlDate( li )
 					print "ret : "+ret
