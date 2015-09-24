@@ -165,7 +165,10 @@ def executeInsertQuery( query ):
 		db.close()
 		return False
 
-# prepares the query from list and pushes it for db insertion
+"""
+prepares the query from list and pushes it for db insertion. 
+Return value : True/False
+"""
 def push2Db( tablename, attributelist, valueslist ):
 	attributestring = list2Str(attributelist)
 	valuestring = valuesList2Str(valueslist)
@@ -177,6 +180,11 @@ def push2Db( tablename, attributelist, valueslist ):
 
 	return ret
 
+"""
+Return Values :-
+1. False : when select query execution fails
+2. Tuple of mysql table rows, each row a tuple in itself
+"""
 def executeSelectQuery( query ):
 	db = MySQLdb.connect( config.host, config.user, config.password, config.db )
 
@@ -214,8 +222,15 @@ def pushLineitem2DB( lineitem_name, module_ids_dict ):
 		attribute_values.append( v )
 	
 	print "Attribute names : " + str(attribute_names) + ", attribute_values : " + str(attribute_values)
-	push2Db( "lineitems", attribute_names, attribute_values )
+	res = push2Db( "lineitems", attribute_names, attribute_values )
 	# print "attribute names with module ids : " + str(tmp_dict)
+	return getLatestTblId( "lineitems" )
+
+# CODE REVIEW NEEDED. HASTILY DONE
+def pushProjectLineitemMapping2DB( project_id, lineitem_id_list ):
+	for it in lineitem_id_list :
+		push2Db( "projects_lineitems_mapping", ["project_id", "lineitem_id", "is_active"], [project_id, it, 1] )
+# @@@END
 
 def readCsv( filename ):
 	linecount = 0
@@ -317,10 +332,17 @@ def readCsv( filename ):
 
 				# print "Latest table ids : " + str( latest_tbl_ids )
 				buf_id = pushLineitem2DB( lineitem_name, latest_tbl_ids )
+				print "Latest lineitem id : " + str( buf_id )
+				lineitem_id_list.append( buf_id )
 
-				# Make the lineitems entry
+		print "Loop ends. LINEITEM IDs : " + str(lineitem_id_list)
+		# CODE REVIEW NEEDED. HASTILY DONE
+		is_done = push2Db("projects", ["name", "is_active"], [project_name, 1])
 
-		print "Loop ends"
+		if is_done:
+			project_id = getLatestTblId( "projects" )
+			pushProjectLineitemMapping2DB( project_id, lineitem_id_list )
+		# @@@END
 
 # fname = getCsvFileName(config.parent_dir)
 # if len(fname) == 1:
