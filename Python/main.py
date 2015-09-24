@@ -9,6 +9,7 @@ def getCsvFileName( directory ):
 	files = os.listdir( directory )
 	return files
 
+# Convert the date input through excel file into standard MySQL DATE format
 def convert2SqlDate( li ):
 	print "@@@ convert2SqlDate invoked. li : " + str(li)
 	# Convert li[1] to lowercase before using it as dictionary key
@@ -61,7 +62,11 @@ def convert2SqlDate( li ):
 
 	return date
 
-
+"""
+Recognized date formats :-
+1. 23/jul 	2. 23/Jul/2015 	3. 23/July 			4. 23/July/2015
+2. 24-Sep	2. 24-Sep-2014	3. 24-SeptEmBer		4. 24-SepteMBer-2014
+"""
 def formatIfDate( item ):
 	# print " @@@@ formatIfDate invoked"
 	try:
@@ -144,7 +149,7 @@ def valuesList2Str( li ):
 	return ret
 
 # commits query to db
-def executeQuery( query ):
+def executeInsertQuery( query ):
 	db = MySQLdb.connect( config.host, config.user, config.password, config.db )
 
 	cur = db.cursor()
@@ -168,15 +173,57 @@ def push2Db( tablename, attributelist, valueslist ):
 	query = "INSERT INTO "+ tablename + attributestring +" VALUES"+valuestring
 	print query
 	# UNCOMMENT AFTER TESTING.
-	ret = executeQuery( query )
+	ret = executeInsertQuery( query )
 
 	return ret
+
+def executeSelectQuery( query ):
+	db = MySQLdb.connect( config.host, config.user, config.password, config.db )
+
+	cur = db.cursor()
+	try:
+		cur.execute( query )
+		res = cur.fetchall()
+		return res
+	except:
+		cur.close()
+		db.close()
+		return False
+
+def selectLatestIdQuery( tablename ):
+	# query = "SELECT * FROM " + tablename + " WHERE id IN ( SELECT MAX(id) FROM "+ tablename + " )"
+	query = "SELECT max(id) as max_id FROM " + tablename
+
+	return query
+
+def getLatestTblId( tablename ):
+ 	q = selectLatestIdQuery( tablename )
+ 	res = executeSelectQuery( q )
+ 	print "Latest entry : " + str(res[0][0])
+
+ 	return res[0][0]
+
+def pushLineitem2DB( lineitem_name, module_ids_dict ):
+	tmp_dict = {}
+	attribute_names = ['name']
+	attribute_values = [lineitem_name]
+	# print "Table ids : ," + str(module_ids_dict)
+	for k,v in module_ids_dict.items() :
+		tmp_dict[k.lower()+"_id"] = v
+		attribute_names.append( k.lower()+"_id" )
+		attribute_values.append( v )
+	
+	print "Attribute names : " + str(attribute_names) + ", attribute_values : " + str(attribute_values)
+	push2Db( "lineitems", attribute_names, attribute_values )
+	# print "attribute names with module ids : " + str(tmp_dict)
 
 def readCsv( filename ):
 	linecount = 0
 	
 	with open( config.parent_dir+"/"+filename, "r+" ) as inputfile :
 		reader = csv.reader( inputfile )
+		latest_tbl_ids = {}
+		lineitem_id_list = []
 
 		for row in reader:
 			print "entered loop"
@@ -188,7 +235,8 @@ def readCsv( filename ):
 			# Line #5 contains the overall project timeline. It treats the overall project as a lineItem.
 			# Create a special lineItem name to represent/identify the whole project  (especially in the DB)
 			if linecount == 5:
-				pass
+				# pass
+				project_name = row[1]
 
 			# CALL THE PUSH TO DB FUNCTION FOR EACH OF THE TABLE FIELDS BELOW
 			if linecount >= 7:
@@ -200,6 +248,7 @@ def readCsv( filename ):
 				BRDRequirementsValues = sanitizeInput(BRDRequirementsRawValues)
 				print push2Db(config.tblBRDRequirements, config.BRDRequirementsAttrs, BRDRequirementsValues)
 				print "post sanitization of fields : " + str( BRDRequirementsValues )
+				latest_tbl_ids[config.tblBRDRequirements] = getLatestTblId( config.tblBRDRequirements )
 				print "\n"
 
 				TechDevNeedRawValues = row[16:24]
@@ -207,6 +256,7 @@ def readCsv( filename ):
 				TechDevNeedValues = sanitizeInput(TechDevNeedRawValues)
 				print push2Db(config.tblTechDevNeed, config.TechDevNeedAttrs, TechDevNeedValues)
 				print "post sanitization of fields : " + str( TechDevNeedValues )
+				latest_tbl_ids[config.tblTechDevNeed] = getLatestTblId( config.tblTechDevNeed )
 				print "\n"
 
 				ContentNeedRawValues = row[24:32]
@@ -214,6 +264,7 @@ def readCsv( filename ):
 				ContentNeedValues = sanitizeInput(ContentNeedRawValues)
 				push2Db(config.tblContentNeed, config.ContentNeedAttrs, ContentNeedValues)
 				print "post sanitization of fields : " + str( sanitizeInput(ContentNeedRawValues) )
+				latest_tbl_ids[config.tblContentNeed] = getLatestTblId( config.tblContentNeed )
 				print "\n"
 
 				TrainingNCommunicationPlanRawValues = row[32:43]
@@ -221,6 +272,7 @@ def readCsv( filename ):
 				TrainingNCommunicationPlanValues = sanitizeInput(TrainingNCommunicationPlanRawValues)
 				push2Db(config.tblTrainingNCommunicationPlan, config.TrainingNCommunicationPlanAttrs, TrainingNCommunicationPlanValues)
 				print "post sanitization of fields : " + str( TrainingNCommunicationPlanValues )
+				latest_tbl_ids[config.tblTrainingNCommunicationPlan] = getLatestTblId( config.tblTrainingNCommunicationPlan )
 				print "\n"
 
 				CapabilitiesEnhancementRawValues = row[43:46]
@@ -228,6 +280,7 @@ def readCsv( filename ):
 				CapabilitiesEnhancementValues = sanitizeInput(CapabilitiesEnhancementRawValues)
 				push2Db(config.tblCapabilitiesEnhancement, config.CapabilitiesEnhancementAttrs, CapabilitiesEnhancementValues)
 				print "post sanitization of fields : " + str( CapabilitiesEnhancementValues )
+				latest_tbl_ids[config.tblCapabilitiesEnhancement] = getLatestTblId( config.tblCapabilitiesEnhancement )
 				print "\n"
 
 				CostBenefitRawValues = row[46:51]
@@ -235,6 +288,7 @@ def readCsv( filename ):
 				CostBenefitValues = sanitizeInput(CostBenefitRawValues)
 				push2Db(config.tblCostBenefit, config.CostBenefitAttrs, CostBenefitValues)
 				print "post sanitization of fields : " + str( CostBenefitValues )
+				latest_tbl_ids[config.tblCostBenefit] = getLatestTblId( config.tblCostBenefit )
 				print "\n"
 
 				RiskMitigationPlanRawValues = row[51:65]
@@ -242,6 +296,7 @@ def readCsv( filename ):
 				RiskMitigationPlanValues = sanitizeInput(RiskMitigationPlanRawValues)
 				push2Db(config.tblRiskMitigationPlan, config.RiskMitigationPlanAttrs, RiskMitigationPlanValues)
 				print "post sanitization of fields : " + str( RiskMitigationPlanValues )
+				latest_tbl_ids[config.tblRiskMitigationPlan] = getLatestTblId( config.tblRiskMitigationPlan )
 				print "\n"
 
 				GoLivePlanRawValues = row[65:72]
@@ -249,6 +304,7 @@ def readCsv( filename ):
 				GoLivePlanValues = sanitizeInput(GoLivePlanRawValues)
 				push2Db(config.tblGoLivePlan, config.GoLivePlanAttrs, GoLivePlanValues)
 				print "post sanitization of fields : " + str( GoLivePlanValues )
+				latest_tbl_ids[config.tblGoLivePlan] = getLatestTblId( config.tblGoLivePlan )
 				print "\n"
 
 				ClosureRawValues = row[72:74]
@@ -256,7 +312,13 @@ def readCsv( filename ):
 				ClosureValues = sanitizeInput(ClosureRawValues)
 				push2Db(config.tblClosure, config.ClosureAttrs, ClosureValues)
 				print "post sanitization of fields : " + str( ClosureValues )
+				latest_tbl_ids[config.tblClosure] = getLatestTblId( config.tblClosure )
 				print "\n"
+
+				# print "Latest table ids : " + str( latest_tbl_ids )
+				buf_id = pushLineitem2DB( lineitem_name, latest_tbl_ids )
+
+				# Make the lineitems entry
 
 		print "Loop ends"
 
