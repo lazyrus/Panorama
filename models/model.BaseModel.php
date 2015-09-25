@@ -7,8 +7,8 @@
 			$this->host = "localhost";
 			$this->user = "root";
 			$this->passwd = "abcde";
-			$this->db = "test_panorama";
-			// $this->db = "test";
+			// $this->db = "test_panorama";
+			$this->db = "test";
 		}
 
 		public function fetchQueryResult( $query ) {
