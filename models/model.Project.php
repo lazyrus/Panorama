@@ -61,7 +61,7 @@
 
 			$lineItemIDsArray = array();
 			if ( $res && $res->num_rows > 0 )
-				if ( $row = $res->fetch_assoc() ){
+				while ( $row = $res->fetch_assoc() ){
 					$lineItemIDsArray[] = $row['lineitem_id'];
 				}
 

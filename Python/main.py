@@ -176,9 +176,7 @@ def push2Db( tablename, attributelist, valueslist ):
 	query = "INSERT INTO "+ tablename + attributestring +" VALUES"+valuestring
 	print query
 	# UNCOMMENT AFTER TESTING.
-	ret = executeInsertQuery( query )
-
-	return ret
+	return executeInsertQuery( query )
 
 """
 Return Values :-
@@ -226,11 +224,16 @@ def pushLineitem2DB( lineitem_name, module_ids_dict ):
 	# print "attribute names with module ids : " + str(tmp_dict)
 	return getLatestTblId( "lineitems" )
 
-# CODE REVIEW NEEDED. HASTILY DONE
 def pushProjectLineitemMapping2DB( project_id, lineitem_id_list ):
+	executionsuccess = True
 	for it in lineitem_id_list :
-		push2Db( "projects_lineitems_mapping", ["project_id", "lineitem_id", "is_active"], [project_id, it, 1] )
-# @@@END
+		success_buffer = push2Db( config.tblprojects_lineitems_mapping, config.projects_lineitems_mappingAttrs, \
+				[project_id, it, 1] )
+
+		if success_buffer is False:
+			executionsuccess = False
+
+	return executionsuccess
 
 def readCsv( filename ):
 	linecount = 0
@@ -248,14 +251,15 @@ def readCsv( filename ):
 				continue
 
 			# Line #5 contains the overall project timeline. It treats the overall project as a lineItem.
-			# Create a special lineItem name to represent/identify the whole project  (especially in the DB)
-			if linecount == 5:
-				# pass
-				project_name = row[1]
-
+			# Create a special lineItem name to represent/identify the whole project (especially in the DB)
 			# CALL THE PUSH TO DB FUNCTION FOR EACH OF THE TABLE FIELDS BELOW
-			if linecount >= 7:
-				lineitem_name = row[1]
+			if  linecount == 5 or linecount >= 7 :
+				if linecount == 5 :
+					project_name = row[1]
+					lineitem_name = "_PROJECT_"
+				elif linecount >= 7 :
+					lineitem_name = row[1]
+				
 				print "Line Item Name : "+lineitem_name
 				
 				BRDRequirementsRawValues = row[2:16]
@@ -337,15 +341,21 @@ def readCsv( filename ):
 
 		print "Loop ends. LINEITEM IDs : " + str(lineitem_id_list)
 		# CODE REVIEW NEEDED. HASTILY DONE
-		is_done = push2Db("projects", ["name", "is_active"], [project_name, 1])
+		is_done = push2Db(config.tblprojects, config.projectsAttrs, [project_name, 1])
 
 		if is_done:
-			project_id = getLatestTblId( "projects" )
-			pushProjectLineitemMapping2DB( project_id, lineitem_id_list )
-		# @@@END
-
+			project_id = getLatestTblId( config.tblprojects )
+			success1 = pushProjectLineitemMapping2DB( project_id, lineitem_id_list )
+		
 # fname = getCsvFileName(config.parent_dir)
 # if len(fname) == 1:
 # 	readCsv( fname[1] )
 
 readCsv("GTM_Template_csv.csv")
+
+"""
+Create success array/dictionary of all the DB commits/insertions. 
+If atleast one commit fails, then 
+	either disable , i.e. mark project as INACTIVE in DB
+	or prompt for disabling the project.
+"""
