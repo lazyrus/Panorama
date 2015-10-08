@@ -7,6 +7,12 @@ db = "test"
 
 parent_dir = "csv"
 
+tblprojects = "projects"
+projectsAttrs = ["name", "is_active"]
+
+tblprojects_lineitems_mapping = "projects_lineitems_mapping"
+projects_lineitems_mappingAttrs = ["project_id", "lineitem_id", "is_active"]
+
 tblBRDRequirements = "BRDRequirements"
 BRDRequirementsAttrs = ["BRD_ref_number", "BRD_date", "approved", "approved_by", "approval_date", \
 						"stakeholders", "stakeholder_BU", "expected_impact_BU", "stakeholder_approved", \
@@ -17,8 +23,8 @@ TechDevNeedAttrs = ["tech_requirement", "dev_time_estimate", "dev_start_date", "
 					"responsible", "accountable", "consulted", "informed"]
 
 tblContentNeed = "ContentNeed"
-ContentNeedAttrs = ["content_creation_enquired", "content_created_by", "content_approved", \
-					"content_approval_by", "responsible", "accountable", "consulted", "informed"]
+ContentNeedAttrs = ["content_creation_enquired", "content_created_by", "content_approval_by",\
+					"content_approved", "responsible", "accountable", "consulted", "informed"]
 
 tblTrainingNCommunicationPlan = "TrainingNCommunicationPlan"
 TrainingNCommunicationPlanAttrs = [	

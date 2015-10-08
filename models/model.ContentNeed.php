@@ -6,7 +6,7 @@
 	class ContentNeed extends BaseModel {
 		public $id, $name;
 		public $content_creation_enquired, $content_created_by;
-		public $content_approved, $content_approval_by;
+		public $content_approval_by, $content_approved;
 		public $responsible, $accountable, $consulted, $informed;
 
 		public function __construct( $id = -1)		// set $this->id = $id; populate all member vars from DB
@@ -21,8 +21,8 @@
 					$this->id = $row['id'];
 					$this->content_creation_enquired = $row['content_creation_enquired'];
 					$this->content_created_by = $row['content_created_by'];
-					$this->content_approved = $row['content_approved'];
 					$this->content_approval_by = $row['content_approval_by'];
+					$this->content_approved = $row['content_approved'];
 					$this->responsible = $row['responsible'];
 					$this->accountable = $row['accountable'];
 					$this->consulted = $row['consulted'];

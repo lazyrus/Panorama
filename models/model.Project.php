@@ -7,6 +7,9 @@
 		public $lineItems;					// array of lineItems in the project
 		public $lineItemIDs;				// array of lineItem ids
 
+		/*
+		* Project Overall status is stored in a member lineItems object having the field 'name' = '_PROJECT_'
+		*/
 		public function __construct( $name = "_dummy1_", $id = "-1" ) 
 		{
 			parent::__construct();
@@ -61,7 +64,7 @@
 
 			$lineItemIDsArray = array();
 			if ( $res && $res->num_rows > 0 )
-				if ( $row = $res->fetch_assoc() ){
+				while ( $row = $res->fetch_assoc() ){
 					$lineItemIDsArray[] = $row['lineitem_id'];
 				}
 
