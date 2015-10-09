@@ -2,30 +2,32 @@
 <html>
 	<head>
 		<title>Panorama</title>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="bootstrap/js/npm.js"></script>
+        <script type="text/javascript" src="js/status.js"></script>
 
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 	</head>
 
 	<body>
 
-			<div style="margin: 2%"><button class="btn"> < HOME</button></div>
+			<div style="margin: 2%"><a href="/"><button class="btn"> < HOME</button></a></div>
         	<h1>Project Name</h1>
 
 
         	<div>
         		<nav class="navbar navbar-default">
 		        	<ul class="nav nav-tabs">
-		        		<li class="active"><a>BRD Requirements</a></li>
-		        		<li><a>Tech Dev Need</a></li>
-		        		<li><a>Content Need</a></li>
-		        		<li><a>Training & Communication Plan</a></li>
-		        		<li><a>Capabilities Enhancement</a></li>
-		        		<li><a>Cost Benefit</a></li>
-		        		<li><a>Risk Mitigation Plan</a></li>
-		        		<li><a>Go Live Plan</a></li>
-		        		<li><a>Closure</a></li>
+		        		<li name="brd-requirement" class="active"><a>BRD Requirements</a></li>
+		        		<li name="tech-dev-need"><a>Tech Dev Need</a></li>
+		        		<li name="content-need"><a>Content Need</a></li>
+		        		<li name="training-n-communication-plan"><a>Training & Communication Plan</a></li>
+		        		<li name="capabilities-enhancement"><a>Capabilities Enhancement</a></li>
+		        		<li name="cost-benefit"><a>Cost Benefit</a></li>
+		        		<li name="risk-mitigation-plan"><a>Risk Mitigation Plan</a></li>
+		        		<li name="go-live-plan"><a>Go Live Plan</a></li>
+		        		<li name="closure"><a>Closure</a></li>
 		        	</ul>
 	        	</nav>
 	        </div>
@@ -108,11 +110,11 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#brd-requirement-edit-modal">EDIT</button>
 	    </div>
 
 	    <!-- Tech Dev Need table -->
-        <div class="module-tabs" id="tech-dev-need" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="tech-dev-need" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -165,12 +167,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#tech-dev-need-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Content Need table -->
-        <div class="module-tabs" id="content-need" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="content-need" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -223,12 +225,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#content-need-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Training & Communication Plan table-->
-        <div class="module-tabs" id="training-n-communication-plan" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="training-n-communication-plan" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -242,7 +244,7 @@
 			        <th title="Training Initiation Date">Training Start Date</th>
 			        <th title="Training Completion Date">Training End Date</th>
 			        <th title="Responsible">Resp..</th>
-			        <th title="Accountable">Acc..</th>
+			        <th title="Accountable">Accntbl..</th>
 			        <th title="Consulted">Consulted</th>
 			        <th title="Informed">Infd..</th>
 			      </tr>
@@ -272,7 +274,7 @@
 			        <td>20-June</td>
 			        <td>20-June</td>
 			        <td>Bhak</td>
-			        <td>Jaa na be</td>
+			        <td>Jaa na</td>
 			        <td>Kya be</td>
 			        <td>Dongo</td>
 			      </tr>
@@ -293,12 +295,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Capabilities Enhancement table -->
-        <div class="module-tabs" id="capabilities-enhancement" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="capabilities-enhancement" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -331,12 +333,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%"  data-toggle="modal" data-target="#capabilities-enhancement-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Cost Benefit table -->
-        <div class="module-tabs" id="cost-benefit" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="cost-benefit" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -377,12 +379,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#cost-benefit-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Risk Mitigation Plan table-->
-        <div class="module-tabs" id="risk-mitigation-plan" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="risk-mitigation-plan" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -459,12 +461,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Go Live Plan table -->
-        <div class="module-tabs" id="go-live-plan" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="go-live-plan" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -513,12 +515,12 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#go-live-plan-edit-modal">EDIT</button>
 	    </div>
 
 
 	    <!-- Closure table -->
-        <div class="module-tabs" id="closure" style="margin: 0px; display: none">
+        <div class="module-tabs hidden" id="closure" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
 	            <thead>
@@ -547,7 +549,203 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%">EDIT</button>
+	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#closure-edit-modal">EDIT</button>
+	    </div>
+
+	    <!-- END OF TABLE DIVS -->
+
+	    <!-- Modal Divs Start -->
+
+	    <!-- BRD Requirement Edit Modal -->
+	    <div class="modal fade" id="brd-requirement-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+
+	    <!-- Tech Dev Need Edit Modal -->
+	    <div class="modal fade" id="tech-dev-need-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+
+	    <!-- Content Need Edit Modal -->
+	    <div class="modal fade" id="content-need-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+
+	    <!-- Training & Communication Plan Edit Modal -->
+	    <div class="modal fade" id="training-n-communication-plan-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <!-- Capabilities Enhancement Edit Modal -->
+	    <div class="modal fade" id="capabilities-enhancement-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <!-- Cost Benefit Edit Modal -->
+	    <div class="modal fade" id="cost-benefit-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <!-- Risk Mitigation Plan Edit Modal -->
+	    <div class="modal fade" id="risk-mitigation-plan-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <!-- Go Live Plan Edit Modal -->
+	    <div class="modal fade" id="go-live-plan-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <!-- Closure Edit Modal -->
+	    <div class="modal fade" id="closure-edit-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<table class="table table-bordered"></table>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
 	    </div>
 
 	</body>
