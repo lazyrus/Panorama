@@ -6,7 +6,7 @@
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="bootstrap/js/npm.js"></script>
-        <script type="text/javascript" src="js/status.js"></script>
+        <script type="text/javascript" src="js/editstatus.js"></script>
 
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/status.css">
@@ -55,6 +55,7 @@
 			        <th title="Accountable">Acc..</th>
 			        <th title="Consulted">Consulted</th>
 			        <th title="Informed">Infd..</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -74,6 +75,9 @@
 			        <td>MaMo</td>
 			        <td>KaMo</td>
 			        <td>Komodo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#brd-requirement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -91,6 +95,9 @@
 			        <td>Jaa na be</td>
 			        <td>Kya be</td>
 			        <td>Dongo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#brd-requirement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -108,11 +115,14 @@
 			        <td>Lorem</td>
 			        <td>Ipsum</td>
 			        <td>Randum</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#brd-requirement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#brd-requirement-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#brd-requirement-edit-modal">EDIT</button> -->
 	    </div>
 
 	    <!-- Tech Dev Need table -->
@@ -130,6 +140,7 @@
 			        <th title="Accountable">Acc..</th>
 			        <th title="Consulted">Consulted</th>
 			        <th title="Informed">Infd..</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -143,6 +154,9 @@
 			        <td>MaMo</td>
 			        <td>KaMo</td>
 			        <td>Komodo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#tech-dev-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -154,6 +168,9 @@
 			        <td>Jaa na be</td>
 			        <td>Kya be</td>
 			        <td>Dongo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#tech-dev-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -165,11 +182,14 @@
 			        <td>Lorem</td>
 			        <td>Ipsum</td>
 			        <td>Randum</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#tech-dev-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#tech-dev-need-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#tech-dev-need-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -188,6 +208,7 @@
 			        <th title="Accountable">Acc..</th>
 			        <th title="Consulted">Consulted</th>
 			        <th title="Informed">Infd..</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -201,6 +222,9 @@
 			        <td>MaMo</td>
 			        <td>KaMo</td>
 			        <td>Komodo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#content-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -212,6 +236,9 @@
 			        <td>Jaa na be</td>
 			        <td>Kya be</td>
 			        <td>Dongo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#content-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -223,15 +250,18 @@
 			        <td>Lorem</td>
 			        <td>Ipsum</td>
 			        <td>Randum</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#content-need-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#content-need-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#content-need-edit-modal">EDIT</button> -->
 	    </div>
 
 
-	    <!-- Training & Communication Plan table-->
+	    <!-- Training & Communication Plan table -->
         <div class="module-tabs hidden" id="training-n-communication-plan" style="margin: 0px">
 
 	        <table class='table table-bordered table-condensed'>
@@ -249,6 +279,7 @@
 			        <th title="Accountable">Accntbl..</th>
 			        <th title="Consulted">Consulted</th>
 			        <th title="Informed">Infd..</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -265,6 +296,9 @@
 			        <td>MaMo</td>
 			        <td>KaMo</td>
 			        <td>Komodo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -279,6 +313,9 @@
 			        <td>Jaa na</td>
 			        <td>Kya be</td>
 			        <td>Dongo</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -293,11 +330,14 @@
 			        <td>Lorem</td>
 			        <td>Ipsum</td>
 			        <td>Randum</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -311,6 +351,7 @@
 			        <th title="Capability Enhancement">Capability Enhancement</th>
 			        <th title="Capability Enhancement Impact Areas">Capability Enhancement Impact Areas</th>
 			        <th title="Capability Enhancement Measurement">Capability Enhancement Measurement</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -319,23 +360,32 @@
 			        <td>Y</td>
 			        <td>Koi To hai</td>
 			        <td>Ye bhi koi hai</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#capabilities-enhancement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
 			        <td>Y</td>
 			        <td>Ek Banda</td>
 			        <td>Ek aur banda</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#capabilities-enhancement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
 			        <td>Y</td>
 			        <td>Mr Incredible</td>
 			        <td>Mrs Incredible</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#capabilities-enhancement-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%"  data-toggle="modal" data-target="#capabilities-enhancement-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%"  data-toggle="modal" data-target="#capabilities-enhancement-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -351,6 +401,7 @@
 			        <th title="Pass On By">Pass On By</th>
 			        <th title="Cost Approval">Cost Approval</th>
 			        <th title="Approved By">Approved By</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -361,6 +412,9 @@
 			        <td>Flash</td>
 			        <td>Y</td>
 			        <td>Mrs Incredible</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#cost-benefit-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -369,6 +423,9 @@
 			        <td>Ek Banda</td>
 			        <td>Y</td>
 			        <td>Ek aur banda</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#cost-benefit-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -377,11 +434,14 @@
 			        <td>Mr Incredible</td>
 			        <td>Y</td>
 			        <td>Mrs Incredible</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#cost-benefit-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#cost-benefit-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#cost-benefit-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -406,6 +466,7 @@
 			        <th title="Final Sign Off">Final Sign Off</th>
 			        <th title="GTM Sign Off">GTM Sign Off</th>
 			        <th title="SVP Sign Off">SVP Sign Off</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -425,6 +486,9 @@
 			        <td>Y</td>
 			        <td>Y</td>
 			        <td>Y</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -442,6 +506,9 @@
 			        <td>Y</td>
 			        <td>Y</td>
 			        <td>Y</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -459,11 +526,14 @@
 			        <td>Y</td>
 			        <td>Y</td>
 			        <td>Y</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -481,6 +551,7 @@
 			        <th title="Post Launch Risk Assessment Done">Post Launch Risk Assessment Done</th>
 			        <th title="Post Launch Risk Assessment Done By">Post Launch Risk Assessment Done By</th>
 			        <th title="Remarks">Remarks</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -493,6 +564,9 @@
 			        <td>Y</td>
 			        <td>NaMo</td>
 			        <td>Doldrums</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#go-live-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
@@ -503,6 +577,9 @@
 			        <td>Y</td>
 			        <td>Mrs Incredible</td>
 			        <td>Huh Waht!!</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#go-live-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
@@ -513,11 +590,14 @@
 			        <td>Y</td>
 			        <td>Mah Nigga</td>
 			        <td>Randum!!</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#go-live-plan-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#go-live-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#go-live-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -530,6 +610,7 @@
 			        <th title="Line Items">Line Items</th>
 			        <th title="Program Closure Date">Program Closure Date</th>
 			        <th title="Program Closure Comment">Program Closure Comment</th>
+			        <th title="Edit">Edit</th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -537,21 +618,30 @@
 			        <td class="warning">PHOENIX</td>
 			        <td>12-July-2023</td>
 			        <td>Doldrums</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#closure-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">Stakeholder's Meet</td>
 			        <td>12-July-2023</td>
 			        <td>Huh Waht!!</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#closure-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			      <tr>
 			        <td class="warning">ORM Escalation Management</td>
 			        <td>12-July-2023</td>
 			        <td>Randum!!</td>
+			        <td>
+			        	<a href="" data-toggle="modal" data-target="#closure-edit-modal"><i class="glyphicon glyphicon-pencil"></i></a>
+			        </td>
 			      </tr>
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#closure-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#closure-edit-modal">EDIT</button> -->
 	    </div>
 
 	    <!-- END OF TABLE DIVS -->
@@ -568,8 +658,74 @@
 	    			</div>
 
 	    			<div class="modal-body">
-
-	    				<table class='table table-bordered'></table>
+	    				<form id="brd-requirement-edit-form">
+		    				<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>BRD Ref Number</td>
+		    							<td><input type="text" name="brd-ref-number"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>BRD Date</td>
+		    							<td><input type="text" name="brd-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Approved</td>
+		    							<td><input type="text" name="approved"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Approved by</td>
+		    							<td><input type="text" name="approved-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Approval Date</td>
+		    							<td><input type="text" name="approval-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Stakeholders</td>
+		    							<td><input type="text" name="stakeholders"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Stakeholder BU</td>
+		    							<td><input type="text" name="stakeholder-bu"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Expected Impact BU</td>
+		    							<td><input type="text" name="expected-impact-bu"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Stakeholders Approved</td>
+		    							<td><input type="text" name="stakeholders-approved"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Stk App Date</td>
+		    							<td><input type="text" name="stk-app-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Responsible</td>
+		    							<td><input type="text" name="responsible"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Accountable</td>
+		    							<td><input type="text" name="accountable"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Consulted</td>
+		    							<td><input type="text" name="consulted"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Informed</td>
+		    							<td><input type="text" name="informed"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+		    			</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -584,16 +740,59 @@
 	    <!-- Tech Dev Need Edit Modal -->
 	    <div class="modal fade" id="tech-dev-need-edit-modal" role="dialog">
 	    	<div class="modal-dialog modal-lg">
-	    		
+
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+		    		<div class="modal-header">
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="tech-dev-need-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Tech Requirement</td>
+		    							<td><input type="text" name="tech-requirement"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Development Time Estimate</td>
+		    							<td><input type="text" name="dev-time-estimate"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Development Start Date</td>
+		    							<td><input type="text" name="development-start-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Development End Date</td>
+		    							<td><input type="text" name="development-end-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Responsible</td>
+		    							<td><input type="text" name="responsible"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Accountable</td>
+		    							<td><input type="text" name="accountable"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Consulted</td>
+		    							<td><input type="text" name="consulted"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Informed</td>
+		    							<td><input type="text" name="informed"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
-
+					
 	    			<div class="modal-footer">
 	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	    			</div>
@@ -609,11 +808,55 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<div class="lineitem-name" name="lineitem-name-content-need">Content Need</div>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="content-need-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Content Creation Required</td>
+		    							<td><input type="text" name="content-creation-required"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Content Created By</td>
+		    							<td><input type="text" name="content-created-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Content Approval By</td>
+		    							<td><input type="text" name="content-approval-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Content Approved</td>
+		    							<td><input type="text" name="content-approved"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Responsible</td>
+		    							<td><input type="text" name="responsible"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Accountable</td>
+		    							<td><input type="text" name="accountable"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Consulted</td>
+		    							<td><input type="text" name="consulted"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Informed</td>
+		    							<td><input type="text" name="informed"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -631,11 +874,67 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<div class="lineitem-name" name="lineitem-name-training-n-communication-plan">
+	    					training-n-communication-plan-edit-modal
+	    				</div>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="training-n-communication-plan-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Communicated to User</td>
+		    							<td><input type="text" name="communicated-to-user"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Internal Business Units Communicated</td>
+		    							<td><input type="text" name="internal-BU-communicated"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Communication Sent Date</td>
+		    							<td><input type="text" name="communication-sent-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Training Required</td>
+		    							<td><input type="text" name="training-required"> </td>
+		    						</tr>
+		    							<td>Training Provided</td>
+		    							<td><input type="text" name="training-provided"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Training Start Date</td>
+		    							<td><input type="text" name="training-required"> </td>
+		    						</tr>
+		    							<td>Training End Date</td>
+		    							<td><input type="text" name="training-provided"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Responsible</td>
+		    							<td><input type="text" name="responsible"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Accountable</td>
+		    							<td><input type="text" name="accountable"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Consulted</td>
+		    							<td><input type="text" name="consulted"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Informed</td>
+		    							<td><input type="text" name="informed"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -651,12 +950,36 @@
 	    	<div class="modal-dialog modal-lg">
 	    		
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+	    			<div class="modal-header">capabilities-enhancement-edit-modal
+	    				<div class="lineitem-name" name="lineitem-name-capabilities-enhancement"></div>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="capabilities-enhancement-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Capability Enhancement</td>
+		    							<td><input type="text" name="capability-enhancement"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Capability Enhancement Impact Areas</td>
+		    							<td><input type="text" name="capability-enhancement-impact-areas"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Capability Enhancement Measurement</td>
+		    							<td><input type="text" name="capability-enhancement-measurement"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -672,12 +995,43 @@
 	    	<div class="modal-dialog modal-lg">
 	    		
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+	    			<div class="modal-header">cost-benefit-edit-modal
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="cost-benefit-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Checked By</td>
+		    							<td><input type="text" name="checked-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Cost Assigned to Business Units</td>
+		    							<td><input type="text" name="cost-assigned-to-business-units"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Pass On By</td>
+		    							<td><input type="text" name="pass-on-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Cost Approval</td>
+		    							<td><input type="text" name="cost-approval"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Approved By</td>
+		    							<td><input type="text" name="approved-by"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -693,12 +1047,77 @@
 	    	<div class="modal-dialog modal-lg">
 	    		
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+	    			<div class="modal-header">risk-mitigation-plan-edit-modal
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="risk-mitigation-plan-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Pre-Launch Check List</td>
+		    							<td><input type="text" name="prelaunch-checklist"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>UAT Required</td>
+		    							<td><input type="text" name="UAT-required"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>UAT Conducted By</td>
+		    							<td><input type="text" name="UAT-conducted-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>UAT Date</td>
+		    							<td><input type="text" name="UAT-date"> </td>
+		    						</tr>
+		    							<td>Vetted By Stakeholders</td>
+		    							<td><input type="text" name="vetted-by-stakeholders"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Feedback Taken From</td>
+		    							<td><input type="text" name="feedback-taken-from"> </td>
+		    						</tr>
+		    							<td>Feedback</td>
+		    							<td><input type="text" name="feedback"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Feedback Incorporated</td>
+		    							<td><input type="text" name="feedback-incorporated"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Feedback Incorporation Date</td>
+		    							<td><input type="text" name="feedback-incorporation-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Final UAT</td>
+		    							<td><input type="text" name="final-UAT"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>UAT Conducted By</td>
+		    							<td><input type="text" name="UAT-conducted-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Final Sign Off</td>
+		    							<td><input type="text" name="final-sign-off"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>GTM Sign Off</td>
+		    							<td><input type="text" name="GTM-sign-off"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>SVP Sign Off</td>
+		    							<td><input type="text" name="SVP-sign-off"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -714,12 +1133,51 @@
 	    	<div class="modal-dialog modal-lg">
 	    		
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+	    			<div class="modal-header">go-live-plan-edit-modal
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="go-live-plan-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Launch Date</td>
+		    							<td><input type="text" name="launch-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Post Launch Support Needed</td>
+		    							<td><input type="text" name="post-launch-support-needed"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Post Launch Support Provided By</td>
+		    							<td><input type="text" name="post-launch-support-provided-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Program Status</td>
+		    							<td><input type="text" name="program-status"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Post Launch Risk Assessment Done</td>
+		    							<td><input type="text" name="post-launch-risk-assessment-done"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Post Launch Risk Assessment Done By</td>
+		    							<td><input type="text" name="post-launch-risk-assessment-done-by"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Remarks</td>
+		    							<td><input type="text" name="remarks"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
@@ -735,12 +1193,31 @@
 	    	<div class="modal-dialog modal-lg">
 	    		
 	    		<div class="modal-content">
-	    			<div class="modal-header">
+	    			<div class="modal-header">closure-edit-modal
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
 	    			<div class="modal-body">
-	    				<table class="table table-bordered"></table>
+	    				<form id="closure-form">
+	    					<table class='table table-bordered table-compressed'>
+		    					<thead>
+		    						<tr class="info">
+			    						<th>Field</th>
+			    						<th>Value</th>
+		    						</tr>
+		    					</thead>
+		    					<tbody>
+		    						<tr>
+		    							<td>Program Closure Date</td>
+		    							<td><input type="text" name="program-closure-date"> </td>
+		    						</tr>
+		    						<tr>
+		    							<td>Program Closure Comment</td>
+		    							<td><input type="text" name="program-closure-comment"> </td>
+		    						</tr>
+		    					</tbody>
+		    				</table>
+	    				</form>
 	    			</div>
 
 	    			<div class="modal-footer">
