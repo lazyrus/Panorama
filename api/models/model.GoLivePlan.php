@@ -16,7 +16,8 @@
 			parent::__construct();
 			$q = "SELECT * FROM GoLivePlan WHERE id = $id";
 
-			$res = $this->fetchQueryResult( $q );
+			$db = new Dbase();
+			$res = $db->fetchQueryResult( $q );
 
 			if ( $res && $res->num_rows > 0 )
 				if ( $row = $res->fetch_assoc() ) {

@@ -112,7 +112,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#brd-requirement-edit-modal">EDIT</button>
+        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#brd-requirement-edit-modal">EDIT</button> -->
 	    </div>
 
 	    <!-- Tech Dev Need table -->
@@ -169,7 +169,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#tech-dev-need-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#tech-dev-need-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -227,7 +227,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#content-need-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#content-need-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -297,7 +297,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#training-n-communication-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -335,7 +335,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%"  data-toggle="modal" data-target="#capabilities-enhancement-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%"  data-toggle="modal" data-target="#capabilities-enhancement-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -381,7 +381,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#cost-benefit-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#cost-benefit-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -463,7 +463,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#risk-mitigation-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -517,7 +517,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#go-live-plan-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#go-live-plan-edit-modal">EDIT</button> -->
 	    </div>
 
 
@@ -551,7 +551,7 @@
 			    </tbody>
 	        </table>
 
-	        <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#closure-edit-modal">EDIT</button>
+	        <!-- <button class="btn btn-primary" style="margin-left: 48%" data-toggle="modal" data-target="#closure-edit-modal">EDIT</button> -->
 	    </div>
 
 	    <!-- END OF TABLE DIVS -->

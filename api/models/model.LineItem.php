@@ -28,7 +28,8 @@
 			parent::__construct();
 			$q = "SELECT * FROM lineitems WHERE id = $id";
 
-			$res = $this->fetchQueryResult( $q );
+			$db = new Dbase();
+			$res = $db->fetchQueryResult( $q );
 
 			if ( $res && $res->num_rows > 0 )
 				while ( $row = $res->fetch_assoc() ) {

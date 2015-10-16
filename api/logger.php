@@ -5,7 +5,10 @@
 		//exec("rm -R files/*");
 
 		$datehour = explode(":", date(DATE_ATOM))[0];
-		$parent_dir = "log";
+
+		// $parent_dir = "log";
+		$parent_dir = __DIR__."/../../private/log";
+		
 		$file_name = "activity.".$datehour.".log";
 		$log_file = $parent_dir."/".$file_name;
 		

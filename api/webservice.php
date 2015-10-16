@@ -10,16 +10,18 @@
 		logger("GET request");
 		logger(print_r($_GET, true));
 
-		$return = serveGetRequest( $_GET );
-		logger( print_r($return, true) );
+		$project = serveGetRequest( $_GET );
+		logger( print_r($project, true) );
 	}
 	else if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 		logger("POST request");
 		logger(print_r($_POST, true));
+		$project = $_POST;
 	}
 
-	$return = json_encode( array( "result" => "Recieved", "kuch" => "naya" ) );
-	logger( print_r($return, true) );
+	$return = json_encode( array( "project" => $project ) );
+	// $return = json_encode( array( "result" => "Recieved", "kuch" => "naya" ) );
+	// logger( print_r($return, true) );
 
 	echo $return;
 
