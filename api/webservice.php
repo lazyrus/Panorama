@@ -19,16 +19,51 @@
 		$project = $_POST;
 	}
 
-	$return = json_encode( array( "project" => $project ) );
+	$return = json_encode( array( "response" => $project ) );
 	// $return = json_encode( array( "result" => "Recieved", "kuch" => "naya" ) );
 	// logger( print_r($return, true) );
-
 	echo $return;
 
+
+	// Takes care of all GET requests
 	function serveGetRequest( $query_params ) {
-		logger("project name : ".$query_params['project']);
+
+		switch ( $query_params['fetch'] ) {
+			case 'projects_list':
+				return getActiveProjects();
+				break;
+
+			case 'project':
+				logger("project name : ".$query_params['project']);
+				$project = new Project( $query_params['project'], 0 );
+				return get_object_vars( $project );
+				break;
+			
+			default:
+				return array( "status" => false, "message" => "Invalid request. Check request parameters" );
+				break;
+		}
+
+		/*logger("project name : ".$query_params['project']);
 		$project = new Project( $query_params['project'], 0 );
-		return get_object_vars( $project );
+		return get_object_vars( $project );*/
+	}
+
+	function getActiveProjects() {
+
+		require_once 'utils/Dbase.php';
+
+		$q = "SELECT * FROM projects WHERE is_active = 1 ORDER BY id DESC";
+		
+		$db = new Dbase();
+		$res = $db->fetchQueryResult( $q );
+
+		$activeProjects = array();
+		while ( $row = $res->fetch_assoc() ) {
+			$activeProjects[] = $row;
+		}
+		
+		return $activeProjects;
 	}
 
 ?>

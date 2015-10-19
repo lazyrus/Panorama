@@ -14,7 +14,7 @@
 
 	<body>
 
-			<div style="margin: 2%"><a href="/"><button class="btn"> < HOME</button></a></div>
+			<div style="margin: 2%"><a href="/ui"><button class="btn"> < HOME</button></a></div>
         	<h1>Project Name</h1>
 
 
