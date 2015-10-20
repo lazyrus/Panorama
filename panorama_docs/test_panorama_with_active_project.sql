@@ -28,20 +28,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `BRDRequirements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `BRD_ref_number` varchar(15) DEFAULT NULL,
+  `BRD_ref_number` varchar(25) DEFAULT NULL,
   `BRD_date` date DEFAULT NULL,
   `approved` tinyint(1) DEFAULT NULL,
-  `approved_by` varchar(40) DEFAULT NULL,
+  `approved_by` varchar(100) DEFAULT NULL,
   `approval_date` date DEFAULT NULL,
   `stakeholders` varchar(122) DEFAULT NULL,
   `stakeholder_BU` varchar(100) DEFAULT NULL,
   `expected_impact_BU` varchar(100) DEFAULT NULL,
   `stakeholder_approved` tinyint(1) DEFAULT NULL,
   `stk_app_date` date DEFAULT NULL,
-  `responsible` varchar(40) DEFAULT NULL,
-  `accountable` varchar(40) DEFAULT NULL,
-  `consulted` varchar(40) DEFAULT NULL,
-  `informed` varchar(40) DEFAULT NULL,
+  `responsible` varchar(100) DEFAULT NULL,
+  `accountable` varchar(100) DEFAULT NULL,
+  `consulted` varchar(100) DEFAULT NULL,
+  `informed` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -108,13 +108,13 @@ INSERT INTO `Closure` (`id`, `program_closure_date`, `program_closure_comment`) 
 CREATE TABLE IF NOT EXISTS `ContentNeed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content_creation_enquired` tinyint(1) DEFAULT NULL,
-  `content_created_by` varchar(40) DEFAULT NULL,
+  `content_created_by` varchar(100) DEFAULT NULL,
   `content_approved` tinyint(1) DEFAULT NULL,
-  `content_approval_by` varchar(40) DEFAULT NULL,
-  `responsible` varchar(40) DEFAULT NULL,
-  `accountable` varchar(40) DEFAULT NULL,
-  `consulted` varchar(40) DEFAULT NULL,
-  `informed` varchar(40) DEFAULT NULL,
+  `content_approval_by` varchar(100) DEFAULT NULL,
+  `responsible` varchar(100) DEFAULT NULL,
+  `accountable` varchar(100) DEFAULT NULL,
+  `consulted` varchar(100) DEFAULT NULL,
+  `informed` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `CostBenefit` (
   `cost_assigned_to_BU` tinyint(1) DEFAULT NULL,
   `pass_on_by` varchar(122) DEFAULT NULL,
   `cost_approval` tinyint(1) DEFAULT NULL,
-  `approved_by` varchar(40) DEFAULT NULL,
+  `approved_by` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -162,11 +162,11 @@ CREATE TABLE IF NOT EXISTS `GoLivePlan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `launch_date` date DEFAULT NULL,
   `post_launch_support_needed` tinyint(1) DEFAULT NULL,
-  `post_launch_support_provided_by` varchar(40) DEFAULT NULL,
+  `post_launch_support_provided_by` varchar(100) DEFAULT NULL,
   `program_status` varchar(40) DEFAULT NULL,
   `post_launch_risk_assessment_done` tinyint(1) DEFAULT NULL,
-  `post_launch_risk_assessment_done_by` varchar(40) DEFAULT NULL,
-  `remarks` varchar(100) DEFAULT NULL,
+  `post_launch_risk_assessment_done_by` varchar(100) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `projects_lineitems_mapping` (
   `project_id` int(11) DEFAULT NULL,
   `lineitem_id` int(11) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
-  `remarks` varchar(100) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -274,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `RiskMitigationPlan` (
   `feedback_incorporated` tinyint(1) DEFAULT NULL,
   `feedback_incorporation_date` date DEFAULT NULL,
   `final_UAT` varchar(40) DEFAULT NULL,
-  `final_UAT_conducted_by` varchar(40) DEFAULT NULL,
+  `final_UAT_conducted_by` varchar(122) DEFAULT NULL,
   `final_sign_off` tinyint(1) DEFAULT NULL,
   `GTM_sign_off` tinyint(1) DEFAULT NULL,
   `SVP_sign_off` tinyint(1) DEFAULT NULL,
@@ -299,13 +299,13 @@ INSERT INTO `RiskMitigationPlan` (`id`, `prelaunch_checklist`, `UAT_required`, `
 CREATE TABLE IF NOT EXISTS `TechDevNeed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tech_requirement` tinyint(1) DEFAULT NULL,
-  `dev_time_estimate` varchar(40) DEFAULT NULL,
+  `dev_time_estimate` varchar(100) DEFAULT NULL,
   `dev_start_date` date DEFAULT NULL,
   `dev_end_date` date DEFAULT NULL,
-  `responsible` varchar(40) DEFAULT NULL,
-  `accountable` varchar(40) DEFAULT NULL,
-  `consulted` varchar(40) DEFAULT NULL,
-  `informed` varchar(40) DEFAULT NULL,
+  `responsible` varchar(100) DEFAULT NULL,
+  `accountable` varchar(100) DEFAULT NULL,
+  `consulted` varchar(100) DEFAULT NULL,
+  `informed` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -333,10 +333,10 @@ CREATE TABLE IF NOT EXISTS `TrainingNCommunicationPlan` (
   `training_provided` tinyint(1) DEFAULT NULL,
   `training_start_date` date DEFAULT NULL,
   `training_end_date` date DEFAULT NULL,
-  `responsible` varchar(40) DEFAULT NULL,
-  `accountable` varchar(40) DEFAULT NULL,
-  `consulted` varchar(40) DEFAULT NULL,
-  `informed` varchar(40) DEFAULT NULL,
+  `responsible` varchar(100) DEFAULT NULL,
+  `accountable` varchar(100) DEFAULT NULL,
+  `consulted` varchar(100) DEFAULT NULL,
+  `informed` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
