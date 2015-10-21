@@ -22,7 +22,10 @@ $(document).ready(function() {
 			console.log("list of Project names : ");
 			$.each( projects, function (i, v) {
 				console.log(v.name);
-				$("ul.nav-pills").append("<li><a class='project-name'>"+v.name+"</a></li>");
+				if (v.completed == 0)
+					$("ul.nav-pills").append("<li><a class='project-name'>"+v.name+"</a></li>");
+				else
+					$("ul.nav-pills").append("<li class='active'><a class='project-name'>"+v.name+"</a></li>");
 			});
 		}
 	}

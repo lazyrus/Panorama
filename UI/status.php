@@ -15,7 +15,7 @@
 	<body>
 
 			<div style="margin: 2%"><a href="/ui"><button class="btn"> < HOME</button></a></div>
-        	<h1>Project Name</h1>
+        	<h1 id="project-name"></h1>
 
 
         	<div>
@@ -37,7 +37,7 @@
 	    <!-- BRD Requirement table -->
         <div class="module-tabs" id="brd-requirement" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-brd-requirements">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -58,57 +58,23 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>420</td>
-			        <td>12-June-2015</td>
-			        <td>Y</td>
-			        <td>Random Guy</td>
-			        <td>13-June</td>
-			        <td>BC, MC</td>
-			        <td>MD, BD</td>
-			        <td>SD</td>
-			        <td>Y</td>
-			        <td>21-Jun</td>
-			        <td>NaMo</td>
-			        <td>MaMo</td>
-			        <td>KaMo</td>
-			        <td>Komodo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>500</td>
-			        <td>14-June-2015</td>
-			        <td>Y</td>
-			        <td>Another Random Guy</td>
-			        <td>16-June</td>
-			        <td>BC, MC</td>
-			        <td>MD, BD</td>
-			        <td>SD</td>
-			        <td>Y</td>
-			        <td>20-Jun</td>
-			        <td>Bhak</td>
-			        <td>Jaa na be</td>
-			        <td>Kya be</td>
-			        <td>Dongo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>32</td>
-			        <td>14-June-2015</td>
-			        <td>Y</td>
-			        <td>Random Guy again</td>
-			        <td>20-June</td>
-			        <td>MC, BC</td>
-			        <td>BD, MD</td>
-			        <td>SD</td>
-			        <td>Y</td>
-			        <td>21-Jun</td>
-			        <td>Al</td>
-			        <td>Lorem</td>
-			        <td>Ipsum</td>
-			        <td>Randum</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning brd_line-item-name">PHOENIX</td>
+			        <td class="brd_brd-ref-number">420</td>
+			        <td class="brd_brd-date">12-June-2015</td>
+			        <td class="brd_approved">Y</td>
+			        <td class="brd_approved-by">Random Guy</td>
+			        <td class="brd_approval-date">13-June</td>
+			        <td class="brd_stakeholders">BC, MC</td>
+			        <td class="brd_stakeholder-BU">MD, BD</td>
+			        <td class="brd_expected-impact-BU">SD</td>
+			        <td class="brd_stakeholders-approved">Y</td>
+			        <td class="brd_stk-app-date">21-Jun</td>
+			        <td class="brd_responsible">NaMo</td>
+			        <td class="brd_accountable">MaMo</td>
+			        <td class="brd_consulted">KaMo</td>
+			        <td class="brd_informed">Komodo</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -118,7 +84,7 @@
 	    <!-- Tech Dev Need table -->
         <div class="module-tabs hidden" id="tech-dev-need" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-tech-dev-need">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -133,39 +99,17 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Y</td>
-			        <td>2 months</td>
-			        <td>13-June</td>
-			        <td>21-Jun</td>
-			        <td>NaMo</td>
-			        <td>MaMo</td>
-			        <td>KaMo</td>
-			        <td>Komodo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Y</td>
-			        <td>Bahut din</td>
-			        <td>16-June</td>
-			        <td>20-Jun</td>
-			        <td>Bhak</td>
-			        <td>Jaa na be</td>
-			        <td>Kya be</td>
-			        <td>Dongo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Y</td>
-			        <td>Random Guy again</td>
-			        <td>20-June</td>
-			        <td>21-Jun</td>
-			        <td>Al</td>
-			        <td>Lorem</td>
-			        <td>Ipsum</td>
-			        <td>Randum</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning tdn_line-item-name">PHOENIX</td>
+			        <td class="tdn_tech-requirement">Y</td>
+			        <td class="tdn_dev-time-estimate">2 months</td>
+			        <td class="tdn_dev-start-date">13-June</td>
+			        <td class="tdn_dev-end-date">21-Jun</td>
+			        <td class="tdn_responsible">NaMo</td>
+			        <td class="tdn_accountable">MaMo</td>
+			        <td class="tdn_consulted">KaMo</td>
+			        <td class="tdn_informed">Komodo</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -176,7 +120,7 @@
 	    <!-- Content Need table -->
         <div class="module-tabs hidden" id="content-need" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-content-need">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -191,39 +135,17 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Y</td>
-			        <td>Koi To hai</td>
-			        <td>Ye bhi koi hai</td>
-			        <td>Y</td>
-			        <td>NaMo</td>
-			        <td>MaMo</td>
-			        <td>KaMo</td>
-			        <td>Komodo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Y</td>
-			        <td>Ek Banda</td>
-			        <td>Ek aur banda</td>
-			        <td>N</td>
-			        <td>Bhak</td>
-			        <td>Jaa na be</td>
-			        <td>Kya be</td>
-			        <td>Dongo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>Mrs Incredible</td>
-			        <td>Y</td>
-			        <td>Al</td>
-			        <td>Lorem</td>
-			        <td>Ipsum</td>
-			        <td>Randum</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning cn_line-item-name">PHOENIX</td>
+			        <td class="cn_content-creation-required">Y</td>
+			        <td class="cn_content-created-by">Koi To hai</td>
+			        <td class="cn_content-approval-by">Ye bhi koi hai</td>
+			        <td class="cn_content-approved">Y</td>
+			        <td class="cn_responsible">NaMo</td>
+			        <td class="cn_accountable">MaMo</td>
+			        <td class="cn_consulted">KaMo</td>
+			        <td class="cn_informed">Komodo</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -234,7 +156,7 @@
 	    <!-- Training & Communication Plan table-->
         <div class="module-tabs hidden" id="training-n-communication-plan" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-training-n-communication-plan">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -252,48 +174,20 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Y</td>
-			        <td>Koi To hai</td>
-			        <td>20-June</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>20-June</td>
-			        <td>NaMo</td>
-			        <td>MaMo</td>
-			        <td>KaMo</td>
-			        <td>Komodo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Y</td>
-			        <td>Ek Banda</td>
-			        <td>20-June</td>
-			        <td>N</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>20-June</td>
-			        <td>Bhak</td>
-			        <td>Jaa na</td>
-			        <td>Kya be</td>
-			        <td>Dongo</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>20-June</td>
-			        <td>N</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>20-June</td>
-			        <td>Al</td>
-			        <td>Lorem</td>
-			        <td>Ipsum</td>
-			        <td>Randum</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning tncp_line-item-name">PHOENIX</td>
+			        <td class="tncp_comm-to-user">Y</td>
+			        <td class="tncp_internal-BU-comm">Koi To hai</td>
+			        <td class="tncp_comm-sent-date">20-June</td>
+			        <td class="tncp_training-required">Y</td>
+			        <td class="tncp_training-provided">Y</td>
+			        <td class="tncp_training-start-date">20-June</td>
+			        <td class="tncp_training-end-date">20-June</td>
+			        <td class="tncp_responsible">NaMo</td>
+			        <td class="tncp_accountable">MaMo</td>
+			        <td class="tncp_consulted">KaMo</td>
+			        <td class="tncp_informed">Komodo</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -304,7 +198,7 @@
 	    <!-- Capabilities Enhancement table -->
         <div class="module-tabs hidden" id="capabilities-enhancement" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-capabilities-enhancement">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -314,24 +208,12 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Y</td>
-			        <td>Koi To hai</td>
-			        <td>Ye bhi koi hai</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Y</td>
-			        <td>Ek Banda</td>
-			        <td>Ek aur banda</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>Mrs Incredible</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning ce_line-item-name">PHOENIX</td>
+			        <td class="ce_capability-enhancement">Y</td>
+			        <td class="ce_capability-enhancement-impact-areas">Koi To hai</td>
+			        <td class="ce_capability-enhancement-measurement">Ye bhi koi hai</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -342,7 +224,7 @@
 	    <!-- Cost Benefit table -->
         <div class="module-tabs hidden" id="cost-benefit" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-cost-benefit">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -354,30 +236,14 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Mr Incredible</td>
-			        <td>Y</td>
-			        <td>Flash</td>
-			        <td>Y</td>
-			        <td>Mrs Incredible</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Mr Incredible</td>
-			        <td>Y</td>
-			        <td>Ek Banda</td>
-			        <td>Y</td>
-			        <td>Ek aur banda</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Bhangi</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>Y</td>
-			        <td>Mrs Incredible</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning cb_line-item-name">PHOENIX</td>
+			        <td class="cb_checked-by">Mr Incredible</td>
+			        <td class="cb_cost-assigned-to-BU">Y</td>
+			        <td class="cb_pass-on-by">Flash</td>
+			        <td class="cb_cost-approval">Y</td>
+			        <td class="cb_approved-by">Mrs Incredible</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -388,7 +254,7 @@
 	    <!-- Risk Mitigation Plan table-->
         <div class="module-tabs hidden" id="risk-mitigation-plan" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-risk-mitigation-plan">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -409,57 +275,23 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>Lambi Si checklist</td>
-			        <td>Y</td>
-			        <td>Koi To hai</td>
-			        <td>20-June</td>
-			        <td>Y</td>
-			        <td>Chutiye Log</td>
-			        <td>Bhasad</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>Kuch Bhi</td>
-			        <td>NaMo</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>Another checklist</td>
-			        <td>Y</td>
-			        <td>Ek Banda</td>
-			        <td>20-June</td>
-			        <td>N</td>
-			        <td>Chutiye Log</td>
-			        <td>Bhasad</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>Kuch Bhi</td>
-			        <td>NaMo</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>Lorem Ipsum Randum</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>20-June</td>
-			        <td>N</td>
-			        <td>The Incredibles</td>
-			        <td>SOS</td>
-			        <td>Y</td>
-			        <td>20-June</td>
-			        <td>Lorem</td>
-			        <td>Ipsum</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			        <td>Y</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning rmp_line-item-name">PHOENIX</td>
+			        <td class="rmp_prelaunch-checklist">Lambi Si checklist</td>
+			        <td class="rmp_UAT-reqd">Y</td>
+			        <td class="rmp_UAT-conducted-by">Koi To hai</td>
+			        <td class="rmp_UAT-date">20-June</td>
+			        <td class="rmp_vetted-by-stakeholders">Y</td>
+			        <td class="rmp_feedback-taken-from">Chutiye Log</td>
+			        <td class="rmp_feedback">Bhasad</td>
+			        <td class="rmp_feedback-incorporated">Y</td>
+			        <td class="rmp_feedback-incorporation-date">20-June</td>
+			        <td class="rmp_final-UAT">Kuch Bhi</td>
+			        <td class="rmp_final-UAT-conducted-by">NaMo</td>
+			        <td class="rmp_final-sign-off">Y</td>
+			        <td class="rmp_GTM-sign-off">Y</td>
+			        <td class="rmp_SVP-sign-off">Y</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -470,7 +302,7 @@
 	    <!-- Go Live Plan table -->
         <div class="module-tabs hidden" id="go-live-plan" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-go-live-plan">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -484,36 +316,16 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>12-July-2023</td>
-			        <td>Y</td>
-			        <td>Koi To hai</td>
-			        <td>Fucked Up</td>
-			        <td>Y</td>
-			        <td>NaMo</td>
-			        <td>Doldrums</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>12-July-2023</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>Duh!!</td>
-			        <td>Y</td>
-			        <td>Mrs Incredible</td>
-			        <td>Huh Waht!!</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>12-July-2023</td>
-			        <td>Y</td>
-			        <td>Mr Incredible</td>
-			        <td>Lorem</td>
-			        <td>Y</td>
-			        <td>Mah Nigga</td>
-			        <td>Randum!!</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning glp_line-item-name">PHOENIX</td>
+			        <td class="glp_launch-date">12-July-2023</td>
+			        <td class="glp_post-launch-support-needed">Y</td>
+			        <td class="glp_post-launch-support-provided-by">Koi To hai</td>
+			        <td class="glp_program-status">Fucked Up</td>
+			        <td class="glp_post-launch-risk-assessment-done">Y</td>
+			        <td class="glp_post-launch-risk-assessment-done-by">NaMo</td>
+			        <td class="glp_remarks">Doldrums</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 
@@ -524,7 +336,7 @@
 	    <!-- Closure table -->
         <div class="module-tabs hidden" id="closure" style="margin: 0px">
 
-	        <table class='table table-bordered table-condensed'>
+	        <table class='table table-bordered table-condensed' id="tbl-closure">
 	            <thead>
 			      <tr class="info">
 			        <th title="Line Items">Line Items</th>
@@ -533,21 +345,11 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td class="warning">PHOENIX</td>
-			        <td>12-July-2023</td>
-			        <td>Doldrums</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">Stakeholder's Meet</td>
-			        <td>12-July-2023</td>
-			        <td>Huh Waht!!</td>
-			      </tr>
-			      <tr>
-			        <td class="warning">ORM Escalation Management</td>
-			        <td>12-July-2023</td>
-			        <td>Randum!!</td>
-			      </tr>
+			      <!-- <tr>
+			        <td class="warning c_line-item-name">PHOENIX</td>
+			        <td class="c_prog-cls-date">12-July-2023</td>
+			        <td class="c_prog-cls-comment">Doldrums</td>
+			      </tr> -->
 			    </tbody>
 	        </table>
 

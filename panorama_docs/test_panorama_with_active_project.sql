@@ -107,7 +107,7 @@ INSERT INTO `Closure` (`id`, `program_closure_date`, `program_closure_comment`) 
 
 CREATE TABLE IF NOT EXISTS `ContentNeed` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `content_creation_enquired` tinyint(1) DEFAULT NULL,
+  `content_creation_required` tinyint(1) DEFAULT NULL,
   `content_created_by` varchar(100) DEFAULT NULL,
   `content_approved` tinyint(1) DEFAULT NULL,
   `content_approval_by` varchar(100) DEFAULT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `ContentNeed` (
 -- Dumping data for table `ContentNeed`
 --
 
-INSERT INTO `ContentNeed` (`id`, `content_creation_enquired`, `content_created_by`, `content_approved`, `content_approval_by`, `responsible`, `accountable`, `consulted`, `informed`) VALUES
+INSERT INTO `ContentNeed` (`id`, `content_creation_required`, `content_created_by`, `content_approved`, `content_approval_by`, `responsible`, `accountable`, `consulted`, `informed`) VALUES
 (-1, 1, '_dummy1_', 1, '_dummy1_', '_dummy1_', '_dummy1_', '_dummy1_', '_dummy1_'),
 (0, 1, '_dummy_', 1, '_dummy_', '_dummy_', '_dummy_', '_dummy_', '_dummy_'),
 (1, 1, 'Me', 1, 'Myself', 'Irene', 'Adler', 'Sherlock', 'Holmes');
