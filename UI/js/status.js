@@ -22,7 +22,7 @@ $(document).ready( function() {
 					jsonObj = JSON.parse( resp );
 					console.log(jsonObj.response);
 					wrapper.set_project_name(jsonObj.response.name);
-					console.log(jsonObj.response.lineItems);
+					// console.log(jsonObj.response.lineItems);
 					wrapper.populate_tables(jsonObj.response.lineItems);
 				}
 			});
@@ -51,7 +51,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_BRDRequirement: function(data, lineitem) {
-			console.log("BRD Requirement fields : "+JSON.stringify(data) );
+			// console.log("BRD Requirement fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning brd_line-item-name'>" + lineitem + "</td>" );
@@ -76,7 +76,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_TechDevNeed: function(data, lineitem) {
-			console.log("Tech Dev Need fields : "+JSON.stringify(data) );
+			// console.log("Tech Dev Need fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning tdn_line-item-name'>" + lineitem + "</td>");
@@ -94,7 +94,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_ContentNeed: function(data, lineitem) {
-			console.log("Content Need fields : "+JSON.stringify(data) );
+			// console.log("Content Need fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning cn_line-item-name'>" + lineitem + "</td>");
@@ -112,7 +112,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_TrainingNCommunicationPlan: function(data, lineitem) {
-			console.log("Training & Communication Plan fields : "+JSON.stringify(data) );
+			// console.log("Training & Communication Plan fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning tncp_line-item-name'>" + lineitem + "</td>");
@@ -133,7 +133,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_CapabilitiesEnhancement: function(data, lineitem) {
-			console.log("Capabilities Enhancement fields : "+JSON.stringify(data) );
+			// console.log("Capabilities Enhancement fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning ce_line-item-name'>" + lineitem + "</td>" );
@@ -146,9 +146,9 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_CostBenefit: function(data, lineitem) {
-			console.log("Cost Benefit fields : "+JSON.stringify(data) );
+			// console.log("Cost Benefit fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
-			console.log("Mike testing : " + data.cost_assigned_to_BU);
+			// console.log("Mike testing : " + data.cost_assigned_to_BU);
 
 			tblContents += ("<td class='warning cb_line-item-name'>" + lineitem + "</td>");
 			tblContents += ("<td class='cb_checked-by'>" + data.checked_by + "</td>");
@@ -162,7 +162,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_RiskMitigationPlan: function(data, lineitem) {
-			console.log("Risk Mitigation Plan fields : "+JSON.stringify(data) );
+			// console.log("Risk Mitigation Plan fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning rmp_line-item-name'>" + lineitem + "</td>");
@@ -182,11 +182,11 @@ $(document).ready( function() {
 			tblContents += ("<td class='rmp_prelaunch-checklist'>" + data.SVP_sign_off + "</td>");
 
 			tblContents += "</tr>";
-			$("#tbl-risk-mitigation-plan").append( tblContents );
+			$("#tbl-risk-mitigation-plan tbody").append( tblContents );
 		},
 
 		populate_tbl_GoLivePlan: function(data, lineitem) {
-			console.log("Go Live Plan fields : "+JSON.stringify(data) );
+			// console.log("Go Live Plan fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning glp_line-item-name'>" + lineitem + "</td>" );
@@ -203,7 +203,7 @@ $(document).ready( function() {
 		},
 
 		populate_tbl_Closure: function(data, lineitem) {
-			console.log("Closure fields : "+JSON.stringify(data) );
+			// console.log("Closure fields : "+JSON.stringify(data) );
 			var tblContents = "<tr>";
 
 			tblContents += ("<td class='warning c_line-item-name'>" + lineitem + "</td>");
