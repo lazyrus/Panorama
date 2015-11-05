@@ -19,12 +19,12 @@
 			$project_details_query = "SELECT * FROM projects WHERE name = '$name' ";
 
 			$db = new Dbase();
-			$res_project = $db->fetchQueryResult( $project_details_query );
+			$res_project = $db->executeQuery( $project_details_query );
 
 			// If 2 or more projects have same name, then identify the project by intersection of name and id
 			if ( $res_project->num_rows > 1 ){
 				$project_details_query = $project_details_query." AND id = $id";
-				$res_project_refined_by_id = $db->fetchQueryResult( $project_details_query );
+				$res_project_refined_by_id = $db->executeQuery( $project_details_query );
 			}
 
 			// If project had to be filtered by name and id
@@ -63,7 +63,7 @@
 			$q = "SELECT * FROM projects_lineitems_mapping WHERE project_id = $this->id";
 
 			$db = new Dbase();
-			$res = $db->fetchQueryResult( $q );
+			$res = $db->executeQuery( $q );
 
 			$lineItemIDsArray = array();
 			if ( $res && $res->num_rows > 0 )

@@ -13,7 +13,7 @@
 			// $this->db = "test";
 		}
 
-		/* public function fetchQueryResult( $query ) {
+		/* public function executeQuery( $query ) {
 			$conn = new mysqli( $this->host, $this->user, $this->passwd, $this->db );
 			$res = $conn->query( $query );
 

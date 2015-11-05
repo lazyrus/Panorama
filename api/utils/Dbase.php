@@ -11,11 +11,28 @@
 			// $this->db = "test";
 		}
 
-		public function fetchQueryResult( $query ){
+		public function executeQuery( $query ){
 			$conn = new mysqli( $this->host, $this->user, $this->passwd, $this->db );
 			$res = $conn->query( $query );
 
 			return $res;
+		}
+		
+		public function array2String( $arr ) {
+			
+		}
+		
+		public function createUpdateString( $arr ) {
+			$str = "";
+			$i = 0;
+			foreach ( $arr as $k => $v ) {
+				if ( $i > 0 )
+					$str .= ", ";
+				$str = $str.$k. "= '".$v."'";
+				$i += 1;
+			}
+			
+			return $str;
 		}
 	}
 ?>

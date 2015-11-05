@@ -29,7 +29,7 @@
 			$q = "SELECT * FROM lineitems WHERE id = $id";
 
 			$db = new Dbase();
-			$res = $db->fetchQueryResult( $q );
+			$res = $db->executeQuery( $q );
 
 			if ( $res && $res->num_rows > 0 )
 				while ( $row = $res->fetch_assoc() ) {

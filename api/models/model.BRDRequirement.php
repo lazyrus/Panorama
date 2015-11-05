@@ -16,7 +16,7 @@
 			$q = "SELECT * FROM BRDRequirements WHERE id = $id";
 
 			$db = new Dbase();
-			$res = $db->fetchQueryResult( $q );
+			$res = $db->executeQuery( $q );
 			
 			if ( $res && $res->num_rows > 0 )
 				if ( $row = $res->fetch_assoc() ){
@@ -38,6 +38,20 @@
 				}
 
 			$res->free();
+		}
+
+		public function update( $fields ) {
+			//logger( print_r( $fields, true ) );
+			logger("BRDRequirement update function called.\nFields : ".print_r( $fields, true ) );
+			
+			$db = new Dbase();
+			$updateString = $db->createUpdateString( $fields['result'] );
+			$q = "UPDATE BRDRequirements SET ".$updateString." WHERE id = $this->id";
+			logger("Update query : ".print_r($q, true) );
+			$success = $db->executeQuery($q);
+			
+			return $success;
+			// return status code, message instead of the above statement
 		}
 	}
 ?>

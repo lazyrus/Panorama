@@ -15,7 +15,7 @@
 			$q = "SELECT * FROM CapabilitiesEnhancement WHERE id = $id";
 
 			$db = new Dbase();
-			$res = $db->fetchQueryResult( $q );
+			$res = $db->executeQuery( $q );
 			
 			if ( $res && $res->num_rows > 0 )
 				if ( $row = $res->fetch_assoc() ) {
@@ -26,6 +26,11 @@
 				}
 
 			$res->free();
+		}
+
+		public function update( $fields ) {
+			//logger( print_r( $fields, true ) );
+			logger("CapabilitiesEnhancement update function called ");
 		}
 	}
 ?>
