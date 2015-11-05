@@ -1,6 +1,8 @@
 $(document).ready( function() {
 	console.log("ENOUGH!!");
 
+	// global variables section
+	lineItemsDump = {};
 	gv = {
 			BRDRequirementModalHeaderHTML : $("#brd-requirement-edit-modal .modal-header").html(),
 			TechDevNeedModalHeaderHTML : $("#tech-dev-need-edit-modal .modal-header").html(),
@@ -12,23 +14,12 @@ $(document).ready( function() {
 			GoLivePlanModalHeaderHTML : $("#go-live-plan-edit-modal .modal-header").html(),
 			ClosureModalHeaderHTML : $("#closure-edit-modal .modal-header").html()
 	};
-
-	$.each( gv, function (k, v) {
-		console.log("Key : " + k + "; Value : " + v);
-	});
-
-	// global variables section
-	lineItemsDump = {};
-	/*BRDRequirementModalHeaderHTML = $("#brd-requirement-edit-modal .modal-header").html();
-	TechDevNeedModalHeaderHTML = $("#tech-dev-need-edit-modal .modal-header").html();
-	ContentNeedModalHeaderHTML = $("#content-need-edit-modal .modal-header").html();
-	TrainingNCommunicationPlanModalHeaderHTML = $("#training-n-communication-plan-edit-modal .modal-header").html();
-	CapabilitiesEnhancementModalHeaderHTML = $("#capabilities-enhancement-edit-modal .modal-header").html();
-	CostBenefitModalHTML = $("#cost-benefit-edit-modal .modal-header").html();
-	RiskMitigationPlanModalHeaderHTML = $("#risk-mitigation-plan-edit-modal .modal-header").html();
-	GoLivePlanModalHeaderHTML = $("#go-live-plan-edit-modal .modal-header").html();
-	ClosureModalHeaderHTML = $("#closure-edit-modal .modal-header").html();*/
 	// global variables section end
+
+	/*$.each( gv, function (k, v) {
+		console.log("Key : " + k + "; Value : " + v);
+	});*/
+
 
 	var projectNameSubstring = window.location.search.substring(1);
 	console.log( "Project Name url substring : "+projectNameSubstring);
@@ -65,6 +56,61 @@ $(document).ready( function() {
 			console.log(lineItemsDump);
 			console.log("lineItemsDump dumped");*/
 			$("#project-name").text(proj_name);
+		},
+
+		route_post_request: function(task, formId, postData ) {
+			console.log("Trying to route post requests!!");
+
+			// Some random processing, followed by post_data() invokation
+			switch( formId ){
+				case 'brd-requirement-edit-form':
+					moduleName = "BRDRequirement";
+					break;
+				case 'tech-dev-need-form':
+					moduleName = "TechDevNeed";
+					break;
+				case 'content-need-form':
+					moduleName = "ContentNeed";
+					break;
+				case 'training-n-communication-plan-form':
+					moduleName = "TrainingNCommunicationPlan";
+					break;
+				case 'capabilities-enhancement-form':
+					moduleName = "CapabilitiesEnhancement";
+					break;
+				case 'cost-benefit-form':
+					moduleName = "CostBenefit";
+					break;
+				case 'risk-mitigation-plan-form':
+					moduleName = "RiskMitigationPlan";
+					break;
+				case 'go-live-plan-form':
+					moduleName = "GoLivePlan";
+					break;
+				case 'closure-form':
+					moduleName = "ClosureModel";
+					break;
+				default:
+					moduleName = "_ERROR_MODULE_NAME_";
+					break;
+			}
+
+			wrapper.post_data(postData, moduleName, task );
+		},
+
+		post_data : function(postData, moduleName, taskName ) {
+			console.log("Acknowledging your call. \nTask : " + taskName + "\nModule Name : " + moduleName + ";\npostData : ");
+			console.log( postData );
+			$.ajax({
+				type: "POST",
+				url: "/api/webservice.php",
+				data : { task : taskName, module : moduleName, data : postData },
+				success: function( resp ) {
+					console.log("Received some response : ");
+					console.log(resp);
+				},
+				dataType : "json"
+			});
 		}
 
 	}
@@ -705,6 +751,19 @@ $(document).ready( function() {
 		/*console.log("Constructed object : ");
 		console.log( rowData );*/
 		modalHandler.populate_modal( moduleName, rowData );
+	});
+
+	$(document).on("click", ".btn-success", function() {
+		var container = $(this).parent().parent();
+		console.log("Container : ");
+		moduleFormId = container.find('form').attr('id');
+		// console.log( "Form ID : " + container.find('form').attr('id') );
+		console.log( "Form ID : " + moduleFormId );
+
+		formData = container.find('form').serializeArray()
+		//console.log( formData );
+
+		wrapper.route_post_request("UPDATE_MODULE", moduleFormId, formData);
 	});
 
 	wrapper.init();
