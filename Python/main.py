@@ -2,12 +2,20 @@ import config
 import csv
 import utils
 import MySQLdb
+import os
 from datetime import datetime 
 
 # return the list of files within the directory
-def getCsvFileName( directory ):
-	files = os.listdir( directory )
-	return files
+def getCsvFileNames( directory ):
+	csvfiles = []
+	contents = os.listdir( directory )
+
+	for item in contents:
+		if os.path.isfile( directory+"/"+item ):
+			if item.split(".")[-1].lower() == "csv":
+				csvfiles.append(item)
+
+	return csvfiles
 
 # Convert the date input through excel file into standard MySQL DATE format
 def convert2SqlDate( li ):
@@ -68,7 +76,7 @@ Recognized date formats :-
 2. 24-Sep	2. 24-Sep-2014	3. 24-SeptEmBer		4. 24-SepteMBer-2014
 """
 def formatIfDate( item ):
-	# print " @@@@ formatIfDate invoked"
+	# print " @@@@ formatIfDate invoked"	# @@@p_change COMMENT
 	try:
 		li = item.split("/")
 
@@ -112,6 +120,7 @@ def formatIfDate( item ):
 
 def sanitizeInput( arr ):
 	for i in range(0, len(arr) ):
+		arr[i] = arr[i].strip()
 		if arr[i].lower() == 'y' or arr[i].lower() == "yes":
 			arr[i] = '1'
 		elif arr[i].lower() == 'n' or arr[i].lower() == "no":
@@ -212,8 +221,8 @@ def getLatestTblId( tablename ):
 def pushLineitem2DB( lineitem_name, module_ids_dict ):
 	tmp_dict = {}
 	attribute_names = ['name']
-	attribute_values = [lineitem_name]
-	# print "Table ids : ," + str(module_ids_dict)
+	attribute_values = [lineitem_name.strip()]
+	# print "Table ids : ," + str(module_ids_dict)		# @@@p_change COMMENT
 	for k,v in module_ids_dict.items() :
 		tmp_dict[k.lower()+"_id"] = v
 		attribute_names.append( k.lower()+"_id" )
@@ -221,7 +230,7 @@ def pushLineitem2DB( lineitem_name, module_ids_dict ):
 	
 	print "Attribute names : " + str(attribute_names) + ", attribute_values : " + str(attribute_values)
 	res = push2Db( "lineitems", attribute_names, attribute_values )
-	# print "attribute names with module ids : " + str(tmp_dict)
+	# print "attribute names with module ids : " + str(tmp_dict)		# @@@p_change COMMENT
 	return getLatestTblId( "lineitems" )
 
 def pushProjectLineitemMapping2DB( project_id, lineitem_id_list ):
@@ -238,7 +247,8 @@ def pushProjectLineitemMapping2DB( project_id, lineitem_id_list ):
 def readCsv( filename ):
 	linecount = 0
 	
-	with open( config.parent_dir+"/"+filename, "r+" ) as inputfile :
+	# with open( config.parent_dir+"/"+filename, "r+" ) as inputfile :
+	with open( filename, "r+" ) as inputfile :
 		reader = csv.reader( inputfile )
 		latest_tbl_ids = {}
 		lineitem_id_list = []
@@ -258,7 +268,7 @@ def readCsv( filename ):
 					project_name = row[1]
 					lineitem_name = "_PROJECT_"
 				elif linecount >= 7 :
-					lineitem_name = row[1]
+					lineitem_name = row[1].strip()
 				
 				print "Line Item Name : "+lineitem_name
 				
@@ -334,7 +344,7 @@ def readCsv( filename ):
 				latest_tbl_ids[config.tblClosure] = getLatestTblId( config.tblClosure )
 				print "\n"
 
-				# print "Latest table ids : " + str( latest_tbl_ids )
+				# print "Latest table ids : " + str( latest_tbl_ids )		# @@@p_change COMMENT
 				buf_id = pushLineitem2DB( lineitem_name, latest_tbl_ids )
 				print "Latest lineitem id : " + str( buf_id )
 				lineitem_id_list.append( buf_id )
@@ -347,11 +357,16 @@ def readCsv( filename ):
 			project_id = getLatestTblId( config.tblprojects )
 			success1 = pushProjectLineitemMapping2DB( project_id, lineitem_id_list )
 		
-# fname = getCsvFileName(config.parent_dir)
+# fname = getCsvFileNames(config.parent_dir)
 # if len(fname) == 1:
 # 	readCsv( fname[1] )
 
-readCsv("GTM_Template_csv.csv")
+# readCsv("GTM_Template_csv.csv")
+
+files = getCsvFileNames( config.parent_dir )
+
+for f in files:
+	readCsv( config.parent_dir + "/" + f )
 
 """
 Create success array/dictionary of all the DB commits/insertions. 
