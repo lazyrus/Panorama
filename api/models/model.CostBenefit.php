@@ -32,7 +32,16 @@
 
 		public function update( $fields ) {
 			//logger( print_r( $fields, true ) );
-			logger("CostBenefit update function called ");
+			logger("CostBenefit update function called.\nFields : ".print_r( $fields, true ) );
+			
+			$db = new Dbase();
+			$updateString = $db->createUpdateString( $fields['result'] );
+			$q = "UPDATE CostBenefit SET ".$updateString." WHERE id = $this->id";
+			logger("Update query : ".print_r($q, true) );
+			$success = $db->executeQuery($q);
+			
+			return $success;
+			// return status code, message instead of the above statement
 		}
 	}
 ?>

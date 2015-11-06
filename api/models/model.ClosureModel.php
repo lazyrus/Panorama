@@ -27,7 +27,16 @@
 
 		public function update( $fields ) {
 			//logger( print_r( $fields, true ) );
-			logger("ClosureModel update function called ");
+			logger("ClosureModel update function called.\nFields : ".print_r( $fields, true ) );
+			
+			$db = new Dbase();
+			$updateString = $db->createUpdateString( $fields['result'] );
+			$q = "UPDATE Closure SET ".$updateString." WHERE id = $this->id";
+			logger("Update query : ".print_r($q, true) );
+			$success = $db->executeQuery($q);
+			
+			return $success;
+			// return status code, message instead of the above statement
 		}
 	}
 ?>
