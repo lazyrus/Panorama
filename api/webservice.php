@@ -2,6 +2,7 @@
 	require_once 'logger.php';
 	require_once 'models/model.Project.php';
 	require_once 'controllers/updateLineItemController.php';
+	require_once 'controllers/newProjectController.php';
 
 	/*$tmp = print_r($_SERVER, true);
 	logger($tmp);
@@ -78,6 +79,19 @@
 				$ret = updateLineItem( $params );
 				break;
 			
+			// Handles the case when a module/project/item has to be marked complete. Identifiers in $params['identifier']
+			case 'MARK_COMPLETE':
+				break;
+				
+			// Handles the case when a module/project/item is to be marked invalid. Identifiers in $params['identifier']
+			case 'MARK_INVALID':
+				break;
+				
+			case 'NEW_PROJECT':
+				$ret = addNewProject( $params );
+				//$ret = "New project initiated";
+				break;
+				
 			default:
 				# code...
 				break;

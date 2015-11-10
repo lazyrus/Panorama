@@ -52,62 +52,62 @@ $(document).ready( function() {
 
 		set_project_name: function( proj_name ) {
 			console.log("PROJECT NAME : "+proj_name);
-			/*console.log("DUMPing lineItemsDump : ");
-			console.log(lineItemsDump);
-			console.log("lineItemsDump dumped");*/
 			$("#project-name").text(proj_name);
 		},
 
-		route_post_request: function(task, formId, postData ) {
+		route_post_request: function(task, LI_identifier, postData ) {
 			console.log("Trying to route post requests!!");
 
 			// Some random processing, followed by post_data() invokation
-			switch( formId ){
+			switch( LI_identifier.form_id ){
 				case 'brd-requirement-edit-form':
-					moduleName = "BRDRequirement";
+					LI_identifier['module_name'] = "BRDRequirement";
 					break;
 				case 'tech-dev-need-form':
-					moduleName = "TechDevNeed";
+					LI_identifier['module_name'] = "TechDevNeed";
 					break;
 				case 'content-need-form':
-					moduleName = "ContentNeed";
+					LI_identifier['module_name'] = "ContentNeed";
 					break;
 				case 'training-n-communication-plan-form':
-					moduleName = "TrainingNCommunicationPlan";
+					LI_identifier['module_name'] = "TrainingNCommunicationPlan";
 					break;
 				case 'capabilities-enhancement-form':
-					moduleName = "CapabilitiesEnhancement";
+					LI_identifier['module_name'] = "CapabilitiesEnhancement";
 					break;
 				case 'cost-benefit-form':
-					moduleName = "CostBenefit";
+					LI_identifier['module_name'] = "CostBenefit";
 					break;
 				case 'risk-mitigation-plan-form':
-					moduleName = "RiskMitigationPlan";
+					LI_identifier['module_name'] = "RiskMitigationPlan";
 					break;
 				case 'go-live-plan-form':
-					moduleName = "GoLivePlan";
+					LI_identifier['module_name'] = "GoLivePlan";
 					break;
 				case 'closure-form':
-					moduleName = "ClosureModel";
+					LI_identifier['module_name'] = "ClosureModel";
 					break;
 				default:
-					moduleName = "_ERROR_MODULE_NAME_";
+					LI_identifier['module_name'] = "_ERROR_MODULE_NAME_";
 					break;
 			}
 
-			wrapper.post_data(postData, moduleName, task );
+			wrapper.post_data(postData, LI_identifier, task );
 		},
 
-		post_data : function(postData, moduleName, taskName ) {
-			console.log("Acknowledging your call. \nTask : " + taskName + "\nModule Name : " + moduleName + ";\npostData : ");
+		post_data : function(postData, identifier, taskName ) {
+			console.log("Identifier object : ");
+			console.log(identifier);
+			console.log("Acknowledging your call. \nTask : " + taskName + ";\npostData : ");
 			console.log( postData );
 			$.ajax({
 				type: "POST",
 				url: "/api/webservice.php",
-				data : { task : taskName, module : moduleName, data : postData },
+				data : { 'task' : taskName, 'identifier' : identifier, 'data' : postData },
 				success: function( resp ) {
 					console.log("Received some response : ");
 					console.log(resp);
+					location.reload();
 				},
 				dataType : "json"
 			});
@@ -361,11 +361,11 @@ $(document).ready( function() {
 				switch(v.className)
 				{
 					case 'warning lineitem-name':
-						console.log("yawwwwwwwwwwwwwwnnnn");
-						// BRDRequirementModalHeaderHtml must be a global variable
+						// gv.BRDRequirementModalHeaderHTML must be a global variable
 						// @@@p_change
 						$("#brd-requirement-edit-modal .modal-header").html( gv.BRDRequirementModalHeaderHTML );
 						$("#brd-requirement-edit-modal button.close").before(v.text);
+						$("#brd-requirement-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'brd_brd-ref-number':
 						// console.log( "brd-ref-number : " + v.text );
@@ -429,6 +429,7 @@ $(document).ready( function() {
 						$("#tech-dev-need-edit-modal .modal-header").html( gv.TechDevNeedModalHeaderHTML );
 						$("#tech-dev-need-edit-modal button.close").before(v.text);
 						console.log(v.text);
+						$("#tech-dev-need-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'tdn_tech-requirement':
 						// console.log( "brd-ref-number : " + v.text );
@@ -470,6 +471,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#content-need-edit-modal .modal-header").html( gv.TechDevNeedModalHeaderHTML );
 						$("#content-need-edit-modal button.close").before( v.text );
+						$("#content-need-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'cn_content-creation-required':
 						$("#content-need-form input[name='content-creation-required']").val(v.text);
@@ -510,6 +512,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#training-n-communication-plan-edit-modal .modal-header").html( gv.TrainingNCommunicationPlanModalHeaderHTML );
 						$("#training-n-communication-plan-edit-modal button.close").before( v.text );
+						$("#training-n-communication-plan-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'tncp_comm-to-user':
 						$("#training-n-communication-plan-form input[name='communicated-to-user']").val(v.text);
@@ -559,6 +562,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#capabilities-enhancement-edit-modal .modal-header").html( gv.CapabilitiesEnhancementModalHeaderHTML );
 						$("#capabilities-enhancement-edit-modal button.close").before(v.text);
+						$("#capabilities-enhancement-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'ce_capability-enhancement':
 						$("#capabilities-enhancement-form input[name='capability-enhancement']").val(v.text);
@@ -584,6 +588,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#cost-benefit-edit-modal .modal-header").html( gv.CostBenefitModalHTML );
 						$("#cost-benefit-edit-modal button.close").before(v.text);
+						$("#cost-benefit-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'cb_checked-by':
 						$("#cost-benefit-form input[name='checked-by']").val(v.text);
@@ -615,6 +620,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#risk-mitigation-plan-edit-modal .modal-header").html( gv.RiskMitigationPlanModalHeaderHTML );
 						$("#risk-mitigation-plan-edit-modal button.close").before( v.text );
+						$("#risk-mitigation-plan-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'rmp_prelaunch-checklist':
 						$("#risk-mitigation-plan-form input[name='prelaunch-checklist']").val(v.text);
@@ -673,6 +679,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#go-live-plan-edit-modal .modal-header").html( gv.GoLivePlanModalHeaderHTML );
 						$("#go-live-plan-edit-modal button.close").before(v.text);
+						$("#go-live-plan-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'glp_launch-date':
 						$("#go-live-plan-form input[name='launch-date']").val(v.text);
@@ -710,6 +717,7 @@ $(document).ready( function() {
 					case 'warning lineitem-name':
 						$("#closure-edit-modal .modal-header").html( gv.ClosureModalHeaderHTML );
 						$("#closure-edit-modal button.close").before(v.text);
+						$("#closure-edit-modal span.lineitem-name").text(v.text);
 						break;
 					case 'c_prog-cls-date':
 						$("#closure-form input[name='program-closure-date']").val(v.text);
@@ -737,19 +745,15 @@ $(document).ready( function() {
 
 	$(document).on("click", ".edit_lineitem", function() {
 
-		//console.log("Trying it out : ");
 		rowObj = $(this).parent().find('td');
 		moduleName = $(this).parent().parent().parent().attr('id');
-		//console.log("Module ID : " + moduleName );
+		
 		rowData = [];
 		$.each(rowObj, function(k,v) {
-			//console.log("Class : " + v.className + "; \tText : " + v.innerText);
 			tmp = { className : v.className, text : v.innerText };
-			//console.log(tmp);
 			rowData.push( tmp );
 		});
-		/*console.log("Constructed object : ");
-		console.log( rowData );*/
+		
 		modalHandler.populate_modal( moduleName, rowData );
 	});
 
@@ -757,13 +761,25 @@ $(document).ready( function() {
 		var container = $(this).parent().parent();
 		console.log("Container : ");
 		moduleFormId = container.find('form').attr('id');
-		// console.log( "Form ID : " + container.find('form').attr('id') );
+		
 		console.log( "Form ID : " + moduleFormId );
 
-		formData = container.find('form').serializeArray()
-		//console.log( formData );
+		formData = container.find('form').serializeArray();
 
-		wrapper.route_post_request("UPDATE_MODULE", moduleFormId, formData);
+		var projectName = $("#project-name").text();
+		console.log("###########################");
+		console.log("Yooohooooo!! Project name : " + projectName );
+		var lineItemName = container.find(".modal-header span.lineitem-name").text();
+		console.log("Line Item name : " + lineItemName );
+		var LI_identifier = {	
+							'project_name' : projectName,
+							'form_id' : moduleFormId,
+							'lineitem_name' : lineItemName
+						};
+		console.log("Identifiers : ");
+		console.log(LI_identifier);
+		console.log("###########################");
+		wrapper.route_post_request("UPDATE_MODULE", LI_identifier, formData);
 	});
 
 	wrapper.init();

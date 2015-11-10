@@ -11,9 +11,9 @@
         <link rel="stylesheet" type="text/css" href="css/status.css">
     </head>
 
-    <body>
-        <h3 style="margin: 2% 50% 5px 33%"><i class="glyphicon glyphicon-folder-open"> PROJECTS</i></h3>
-        <div class="projects-list" style="margin: 5% 33% 15px 33%">
+    <body background="img/bg_editindex.jpg">
+        <h3 style="margin: 2% 30% 5px 40%"><i class="glyphicon glyphicon-folder-open"> PROJECTS</i></h3>
+        <div class="projects-list" style="margin: 30px 33% 15px 40%">
         	<ul class="nav nav-pills nav-stacked">
         		<!-- <li><a href="/status.php">Project Aqua</a></li>
         		<li class="active"><a href="#">Project Phoenix</a></li>

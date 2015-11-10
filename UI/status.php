@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/status.css">
 	</head>
 
-	<body>
+	<body background="img/bg_editindex.jpg">
 
 			<div style="margin: 2%"><a href="/ui"><button class="btn"> < HOME</button></a></div>
         	<h1 id="project-name"></h1>

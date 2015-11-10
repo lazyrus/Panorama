@@ -12,10 +12,16 @@
         <link rel="stylesheet" type="text/css" href="css/status.css">
 	</head>
 
-	<body>
+	<body background="img/bg_editindex.jpg">
 
-			<div style="margin: 2%"><a href="/ui/editindex.php"><button class="btn"> < HOME</button></a></div>
-        	<h1>Project Name</h1>
+			<div style="margin: 2%">
+				<a href="/ui/editindex.php"><button class="btn" style="float: left"> < HOME</button></a>
+				<div class="btn-group" style="float: right">
+					<button class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> COMPLETE </button>
+					<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> DISABLE </button>
+				</div>
+			</div>
+        	<br><div><h1 id="project-name"></h1></div>
 
 
         	<div>
@@ -292,7 +298,7 @@
 			        <th title="Feedback Incorporated">Feedback Incorporated</th>
 			        <th title="Feedback Incorporation Date">Feedback Incorporation Date</th>
 			        <th title="Final UAT">Final UAT </th>
-			        <th title="UAT Conducted By">UAT Conducted By</th>
+			        <th title="UAT Conducted By">Final UAT Conducted By</th>
 			        <th title="Final Sign Off">Final Sign Off</th>
 			        <th title="GTM Sign Off">GTM Sign Off</th>
 			        <th title="SVP Sign Off">SVP Sign Off</th>
@@ -402,6 +408,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none">Whoaaa!!</span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -492,6 +499,7 @@
 
 	    		<div class="modal-content">
 		    		<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -558,6 +566,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -624,6 +633,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -699,6 +709,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -744,6 +755,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -797,6 +809,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -849,8 +862,8 @@
 		    							<td><input type="text" name="final-UAT"> </td>
 		    						</tr>
 		    						<tr>
-		    							<td>UAT Conducted By</td>
-		    							<td><input type="text" name="UAT-conducted-by"> </td>
+		    							<td>Final UAT Conducted By</td>
+		    							<td><input type="text" name="final-UAT-conducted-by"> </td>
 		    						</tr>
 		    						<tr>
 		    							<td>Final Sign Off</td>
@@ -884,6 +897,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
@@ -945,6 +959,7 @@
 	    		
 	    		<div class="modal-content">
 	    			<div class="modal-header">
+	    				<span class="lineitem-name" style="display: none"></span>
 	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	    			</div>
 
