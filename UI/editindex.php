@@ -36,7 +36,7 @@
             </table>
         </div> -->
         <div style="margin: 5% 33% 2px 3%">
-            <button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> NEW PROJECT </button>
+            <button class="btn btn-success btn-sm" id="btn-new-project"><i class="glyphicon glyphicon-plus"></i> NEW PROJECT </button>
         </div>
 
         <div class="projects-list" style="margin: 2% 33% 15px 40%">

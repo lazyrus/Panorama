@@ -38,7 +38,7 @@
     </button>
     
     <!-- The global progress bar -->
-    <p>Upload progress</p>
+    <p><!-- Upload progress --></p>
     <div id="progress" class="progress progress-success progress-striped">
       <div class="bar"></div>
     </div>

@@ -26,20 +26,24 @@
 	function commit2DB() {
 		logger("CSV containing directory : ".print_r(CSV_DIR, true) );
 		
-		exec("sudo chmod -R 755 ".CSV_DIR);	// ensuring that the files directory is readable for the program
-		//exec("sudo chmod -R 777 ".CSV_DIR);
-		exec("sudo chown -R $USER:$USER ".BASE_DIR."/public");
+		//exec("sudo chown -R $USER:$USER ".BASE_DIR."/public");
 		logger("BASE DIR : ".print_r(BASE_DIR, true) );
 		
+		//exec("sudo chown -R root:www-data ".BASE_DIR."/public");
+		exec("sudo chmod -R 755 ".BASE_DIR."/public/FileUploader");
+		exec("sudo chmod -R 755 ".CSV_DIR);	// ensuring that the files directory is readable for the program
+		//exec("sudo chmod -R 777 ".CSV_DIR);
+		
 		$res = exec("python ".BASE_DIR."/public/FileUploader/main.py", $output, $return_var);
+		// $res = exec("python ".BASE_DIR."/public/FileUploader/main.py > /home/pallav/err_log.txt", $output, $return_var);
 		logger("****************\nPython execution reports : \n");
 		logger("RETURNED : ".print_r($res, true) );
 		logger("OUTPUT : ".print_r($output, true) );
 		logger("RETURN_VAR : ".print_r($return_var, true) );
 		
-		logger("DB commit should be done!! Initiating directory clean-up. Python base folder : ".print_r("python ".BASE_DIR."/public/FileUploader/main.py", true) );
-		/* cleanup();
-		logger("CleanUp should be done!!"); */
+		logger("Initiating directory clean-up!!");
+		cleanup();
+		logger("CleanUp should be done!!");
 	}
 	
 	function cleanup() {

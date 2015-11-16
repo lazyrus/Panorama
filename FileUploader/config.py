@@ -5,7 +5,7 @@ db = "test_panorama"
 # db = "test"
 
 
-parent_dir = "files"
+parent_dir = "/var/www/panorama/public/FileUploader/files"
 
 tblprojects = "projects"
 projectsAttrs = ["name", "is_active"]
@@ -23,7 +23,7 @@ TechDevNeedAttrs = ["tech_requirement", "dev_time_estimate", "dev_start_date", "
 					"responsible", "accountable", "consulted", "informed"]
 
 tblContentNeed = "ContentNeed"
-ContentNeedAttrs = ["content_creation_enquired", "content_created_by", "content_approval_by",\
+ContentNeedAttrs = ["content_creation_required", "content_created_by", "content_approval_by",\
 					"content_approved", "responsible", "accountable", "consulted", "informed"]
 
 tblTrainingNCommunicationPlan = "TrainingNCommunicationPlan"

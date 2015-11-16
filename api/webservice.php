@@ -3,6 +3,7 @@
 	require_once 'models/model.Project.php';
 	require_once 'controllers/updateLineItemController.php';
 	require_once 'controllers/newProjectController.php';
+	require_once 'controllers/projectController.php';
 
 	/*$tmp = print_r($_SERVER, true);
 	logger($tmp);
@@ -81,10 +82,18 @@
 			
 			// Handles the case when a module/project/item has to be marked complete. Identifiers in $params['identifier']
 			case 'MARK_COMPLETE':
+				$tmp = $params['identifier']['project_name'];
+				$tmp_proj = new ProjectController();
+				$tmp_proj->markAsComplete($params);
+				logger("$tmp is COMPLETE");
 				break;
 				
 			// Handles the case when a module/project/item is to be marked invalid. Identifiers in $params['identifier']
-			case 'MARK_INVALID':
+			case 'MARK_DISABLED':
+				$tmp = $params['identifier']['project_name'];
+				$tmp_proj = new ProjectController();
+				$tmp_proj->markAsInactive($params);
+				logger("$tmp is INVALID");
 				break;
 				
 			case 'NEW_PROJECT':

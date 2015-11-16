@@ -782,5 +782,19 @@ $(document).ready( function() {
 		wrapper.route_post_request("UPDATE_MODULE", LI_identifier, formData);
 	});
 
+	$(document).on("click", "#btn-complete", function(e) {
+		e.preventDefault();
+		var projectName = $("#project-name").text();
+		wrapper.post_data( {}, { project_name : projectName }, "MARK_COMPLETE" );
+		console.log("Project Completion initiated for "+projectName);
+	});
+
+	$(document).on("click", "#btn-disable", function(e) {
+		e.preventDefault();
+		var projectName = $("#project-name").text();
+		wrapper.post_data( {}, { project_name : projectName }, "MARK_DISABLED" );
+		console.log("Project Disabling initiated for "+projectName);
+	});
+
 	wrapper.init();
 });

@@ -9,7 +9,7 @@ from datetime import datetime
 def getCsvFileNames( directory ):
 	csvfiles = []
 	contents = os.listdir( directory )
-
+	
 	for item in contents:
 		if os.path.isfile( directory+"/"+item ):
 			if item.split(".")[-1].lower() == "csv":

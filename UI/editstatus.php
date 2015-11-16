@@ -15,10 +15,10 @@
 	<body background="img/bg_editindex.jpg">
 
 			<div style="margin: 2%">
-				<a href="/ui/editindex.php"><button class="btn" style="float: left"> < HOME</button></a>
+				<a href="/ui/editindex.php"><button class="btn" style="float: left"><i class="glyphicon glyphicon-home"></i> HOME</button></a>
 				<div class="btn-group" style="float: right">
-					<button class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> COMPLETE </button>
-					<button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> DISABLE </button>
+					<button class="btn btn-primary" id="btn-complete"><i class="glyphicon glyphicon-ok"></i> COMPLETE </button>
+					<button class="btn btn-danger" id="btn-disable"><i class="glyphicon glyphicon-remove"></i> DISABLE </button>
 				</div>
 			</div>
         	<br><div><h1 id="project-name"></h1></div>

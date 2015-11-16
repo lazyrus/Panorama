@@ -37,6 +37,11 @@ $(document).ready(function() {
 		window.location.href = redirectUrl;
 	});
 
+	$(document).on("click", "#btn-new-project", function(e) {
+		e.preventDefault();
+		window.location.href = "/FileUploader";
+	})
+
 	index.init();
 	// console.log( projects_list );
 });

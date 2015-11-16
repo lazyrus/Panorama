@@ -14,7 +14,7 @@
 
 	<body background="img/bg_editindex.jpg">
 
-			<div style="margin: 2%"><a href="/ui"><button class="btn"> < HOME</button></a></div>
+			<div style="margin: 2%"><a href="/ui"><button class="btn"><i class="glyphicon glyphicon-home"></i> HOME</button></a></div>
         	<h1 id="project-name"></h1>
 
 
