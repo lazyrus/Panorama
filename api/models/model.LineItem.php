@@ -35,7 +35,8 @@
 				while ( $row = $res->fetch_assoc() ) {
 					$this->id = $row['id'];
 					// put the not NULL checks on $row[<members>] before initializing the classes
-					$this->name = $row['name'];
+					// $this->name = $row['name'];
+					$this->name = $row['name'] == "_PROJECT_" ? "OVERALL PROJECT" : $row['name'];
 					$this->BRDRequirementObject = new BRDRequirement( $row['brdrequirements_id'] );
 					$this->TechDevNeedObject = new TechDevNeed( $row['techdevneed_id'] );
 					$this->ContentNeedObject = new ContentNeed( $row['contentneed_id'] );

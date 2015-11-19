@@ -3,9 +3,9 @@
 	require_once "model.BaseModel.php";
 
 	class Project extends BaseModel{
-		public $id, $name, $remarks;		// FETCH from projects table
-		public $lineItems;					// array of lineItems in the project
-		public $lineItemIDs;				// array of lineItem ids
+		public $id, $name, $completed, $remarks;	// FETCH from projects table
+		public $lineItems;							// array of lineItems in the project
+		public $lineItemIDs;						// array of lineItem ids
 
 		/*
 		* Project Overall status is stored in a member lineItems object having the field 'name' = '_PROJECT_'
@@ -33,6 +33,7 @@
 					if ( $row['is_active'] != 0 ) {
 						$this->id = $row['id'];
 						$this->name = $row['name'];
+						$this->completed = $row['completed'];
 						$this->remarks = $row['remarks'];
 						break;
 					}
@@ -45,6 +46,7 @@
 					if ( $row_project['is_active'] != 0 ){
 						$this->id = $row_project['id'];
 						$this->name = $row_project['name'];
+						$this->completed = $row_project['completed'];
 						$this->remarks = $row_project['remarks'];
 						break;
 					}
