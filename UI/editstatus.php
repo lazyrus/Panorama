@@ -18,7 +18,9 @@
 				<a href="/ui/editindex.php"><button class="btn" style="float: left"><i class="glyphicon glyphicon-home"></i> HOME</button></a>
 				<div class="btn-group" style="float: right">
 					<button class="btn btn-primary" id="btn-complete"><i class="glyphicon glyphicon-ok"></i> COMPLETE </button>
-					<button class="btn btn-danger" id="btn-disable"><i class="glyphicon glyphicon-remove"></i> DISABLE </button>
+					<button class="btn btn-danger" id="btn-disable" data-toggle="modal" data-target="#project-disable-confirmation-modal">
+						<i class="glyphicon glyphicon-remove"></i> DISABLE 
+					</button>
 				</div>
 			</div>
         	<br><div><h1 id="project-name"></h1></div>
@@ -995,6 +997,34 @@
 	    	</div>
 	    </div>
 
+
+	    <!-- Project Disable Confirmation Prompt Modal -->
+	    <div class="modal fade" id="project-disable-confirmation-modal" role="dialog">
+	    	<div class="modal-dialog modal-lg">
+	    		
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<span class="lineitem-name">DISABLE PROJECT</span>
+	    				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    			</div>
+
+	    			<div class="modal-body">
+	    				<div align="center">
+	    					<h3>Are you sure you want to disable the project?</h3>
+	    					Once disabled, the project is not visible in projects' list.
+	    				</div>
+	    			</div>
+
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-success" id="btn-disable-confirm" data-dismiss="modal">DISABLE</button>
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+	    			</div>
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    
 	</body>
 </html>
 

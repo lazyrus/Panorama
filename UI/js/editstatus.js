@@ -40,9 +40,17 @@ $(document).ready( function() {
 				success: function( resp ) {
 					// console.log(resp);
 					jsonObj = JSON.parse( resp );
+					console.log("RESPONSE : ");
 					console.log(jsonObj.response);
+
+					// Redirects page to projects' list page if the response returns null project id 
+					// i.e. no project details fetched.
+					if (!jsonObj.response.id ){
+						window.location = "/ui/editindex.php";
+					}
+
 					lineItemsDump = jsonObj.response.lineItems;
-					wrapper.set_project_name(jsonObj.response.name);
+					wrapper.set_page_variables( jsonObj.response );
 					// console.log(jsonObj.response.lineItems);
 					tableHandler.populate_tables( lineItemsDump );
 					// modalHandler.populate_modal( lineItemsDump );
@@ -50,9 +58,28 @@ $(document).ready( function() {
 			});
 		}, 
 
+		set_page_variables: function( containerVar ) {
+			console.log("Trying to set page variables!!");
+			wrapper.set_project_name( containerVar.name );
+			wrapper.toggle_complete_button( containerVar.completed );
+		},
+
 		set_project_name: function( proj_name ) {
 			console.log("PROJECT NAME : "+proj_name);
 			$("#project-name").text(proj_name);
+		},
+
+		toggle_complete_button: function( completed ) {
+			console.log("COMPLETE button toggling");
+			// $("#btn-complete").text();
+			if (completed == 1) {
+				console.log("DONE");
+				$("#btn-complete").addClass("disabled");
+			}
+			/*else {
+				console.log("NOT YET");
+				$("#btn-complete").text("COMPLETE");
+			}*/
 		},
 
 		route_post_request: function(task, LI_identifier, postData ) {
@@ -95,7 +122,7 @@ $(document).ready( function() {
 			wrapper.post_data(postData, LI_identifier, task );
 		},
 
-		post_data : function(postData, identifier, taskName ) {
+		post_data : function(postData, identifier, taskName) {
 			console.log("Identifier object : ");
 			console.log(identifier);
 			console.log("Acknowledging your call. \nTask : " + taskName + ";\npostData : ");
@@ -750,7 +777,8 @@ $(document).ready( function() {
 		
 		rowData = [];
 		$.each(rowObj, function(k,v) {
-			tmp = { className : v.className, text : v.innerText };
+			tmp = { className : v.className, text : v.innerHTML /*v.innerText*/ };
+									// innerText works in chrome, but not in firefox
 			rowData.push( tmp );
 		});
 		
@@ -789,7 +817,7 @@ $(document).ready( function() {
 		console.log("Project Completion initiated for "+projectName);
 	});
 
-	$(document).on("click", "#btn-disable", function(e) {
+	$(document).on("click", "#btn-disable-confirm", function(e) {
 		e.preventDefault();
 		var projectName = $("#project-name").text();
 		wrapper.post_data( {}, { project_name : projectName }, "MARK_DISABLED" );
